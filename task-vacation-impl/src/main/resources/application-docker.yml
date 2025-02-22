@@ -1,0 +1,7 @@
+camunda:
+  client:
+    zeebe:
+      gateway-url: http://zeebe:26500
+
+erp:
+  baseUrl: "http://host.docker.internal:8080/erp"

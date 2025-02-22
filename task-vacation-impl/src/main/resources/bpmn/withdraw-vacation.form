@@ -1,0 +1,49 @@
+{
+  "components": [
+    {
+      "label": "Ініціатор заявки",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0yqtkx8",
+        "columns": null
+      },
+      "id": "Field_03nruyr",
+      "key": "vacation_full_name",
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "Так",
+          "value": "true"
+        },
+        {
+          "label": "Ні",
+          "value": "false"
+        }
+      ],
+      "label": "Скасувати заявку?",
+      "type": "radio",
+      "layout": {
+        "row": "Row_1dfcbiv",
+        "columns": null
+      },
+      "id": "Field_1wsct3i",
+      "key": "withdraw_vacation",
+      "defaultValue": "false",
+      "disabled": false,
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "withdraw-vacation",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.23.0"
+  },
+  "schemaVersion": 16
+}

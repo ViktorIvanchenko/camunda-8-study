@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:conversion="http://camunda.org/schema/conversion/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.22.0" conversion:converterVersion="0.9.1-SNAPSHOT" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.5.0">
+  <bpmn:process id="task-vacation" name="task-vacation" processType="None" isClosed="false" isExecutable="true">
+    <bpmn:startEvent id="StartEventProcessStarted" name="Process&#10;started">
+      <bpmn:documentation>- WARNING: Attribute 'initiator' with value 'initiatorID' on 'startEvent' is not supported.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="WARNING">Attribute 'initiator' with value 'initiatorID' on 'startEvent' is not supported.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>SequenceFlow1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow1" sourceRef="StartEventProcessStarted" targetRef="Search_All_Users" />
+    <bpmn:sequenceFlow id="Flow_17kuhu7" sourceRef="Select_Vacation_Block" targetRef="Position_Maping_Block" />
+    <bpmn:userTask id="Select_Vacation_Block" name="Вибір типу та сроки відпустки" implementation="##unspecified">
+      <bpmn:documentation>- TASK: Element 'formData' cannot be transformed. Please define a form key instead.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="TASK">Element 'formData' cannot be transformed. Please define a form key instead.</conversion:message>
+        <zeebe:formDefinition formId="type-and-duration-vacation" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1y1js8e</bpmn:incoming>
+      <bpmn:outgoing>Flow_17kuhu7</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0o5z3dq" sourceRef="Position_Maping_Block" targetRef="Gateway_Choice_Department" />
+    <bpmn:serviceTask id="Position_Maping_Block" name="Посада в код" implementation="##WebService">
+      <bpmn:documentation>- REVIEW: Attribute 'delegateExpression' on 'serviceTask' was mapped. Delegate call to '${positionMapping}' was transformed to job type 'camunda-7-adapter'. Please review your implementation.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Attribute 'delegateExpression' on 'serviceTask' was mapped. Delegate call to '${positionMapping}' was transformed to job type 'camunda-7-adapter'. Please review your implementation.</conversion:message>
+        <zeebe:taskDefinition type="positionMapping" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17kuhu7</bpmn:incoming>
+      <bpmn:outgoing>Flow_0o5z3dq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_Choice_Department">
+      <bpmn:incoming>Flow_0o5z3dq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gyzu9a</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ewxbjb</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1nqac2l</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0gyzu9a" sourceRef="Gateway_Choice_Department" targetRef="Engineering_Department_Block">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${department == 2}' -&gt; '=department = 2'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${department == 2}' -&gt; '=department = 2'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=department = 3</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:userTask id="Trade_Department_Block" name="Відділ продаж" implementation="##unspecified">
+      <bpmn:documentation>- TASK: Element 'formData' cannot be transformed. Please define a form key instead.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="TASK">Element 'formData' cannot be transformed. Please define a form key instead.</conversion:message>
+        <zeebe:formDefinition formId="application-approve" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1nqac2l</bpmn:incoming>
+      <bpmn:outgoing>Flow_0oe0x27</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Engineering_Department_Block" name="Інженерний відділ" implementation="##unspecified">
+      <bpmn:documentation>- TASK: Element 'formData' cannot be transformed. Please define a form key instead.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="TASK">Element 'formData' cannot be transformed. Please define a form key instead.</conversion:message>
+        <zeebe:formDefinition formId="application-approve" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0gyzu9a</bpmn:incoming>
+      <bpmn:outgoing>Flow_07n06e3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_0lm9rpr">
+      <bpmn:incoming>Flow_07n06e3</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bl9w5r</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0cbeh1g</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1bl9w5r" name="Не согласовано" sourceRef="Gateway_0lm9rpr" targetRef="Event_06jrsiu">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${engineering_approve_vacation == false}' -&gt; '=engineering_approve_vacation = false'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${engineering_approve_vacation == false}' -&gt; '=engineering_approve_vacation = false'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isApprove = "false"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_07n06e3" sourceRef="Engineering_Department_Block" targetRef="Gateway_0lm9rpr" />
+    <bpmn:exclusiveGateway id="Gateway_1qqni97">
+      <bpmn:incoming>Flow_00s9cc0</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qcua41</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1qq1pj0</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0qcua41" name="Согласовано" sourceRef="Gateway_1qqni97" targetRef="HR_Block">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${management_approve_vacation == true}' -&gt; '=management_approve_vacation = true'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${management_approve_vacation == true}' -&gt; '=management_approve_vacation = true'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isApprove = "true"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="Save_Vacation_Blank_Block" name="Зберегти заявку" implementation="##WebService">
+      <bpmn:documentation>- REVIEW: Attribute 'delegateExpression' on 'serviceTask' was mapped. Delegate call to '${saveRequest}' was transformed to job type 'camunda-7-adapter'. Please review your implementation.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Attribute 'delegateExpression' on 'serviceTask' was mapped. Delegate call to '${saveRequest}' was transformed to job type 'camunda-7-adapter'. Please review your implementation.</conversion:message>
+        <zeebe:taskHeaders>
+          <zeebe:header key="delegateExpression" value="${saveRequest}" />
+        </zeebe:taskHeaders>
+        <zeebe:taskDefinition type="saveRequest" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0yepbmq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1qfru3l</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1qfru3l" sourceRef="Save_Vacation_Blank_Block" targetRef="event_remind" />
+    <bpmn:intermediateCatchEvent id="event_remind">
+      <bpmn:documentation>- REVIEW: Timer expression was transformed: Please review transformed expression: '${reminder_date}' -&gt; '=reminder_date'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Timer expression was transformed: Please review transformed expression: '${reminder_date}' -&gt; '=reminder_date'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1qfru3l</bpmn:incoming>
+      <bpmn:outgoing>Flow_0draw90</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0nroj9l">
+        <bpmn:timeDate xsi:type="bpmn:tFormalExpression">=reminder_date</bpmn:timeDate>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_0draw90" sourceRef="event_remind" targetRef="Cancel_Vacation_Block" />
+    <bpmn:exclusiveGateway id="Gateway_06svi48">
+      <bpmn:incoming>Flow_1tyr4d9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fgd0lf</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0futcry</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1tyr4d9" sourceRef="Cancel_Vacation_Block" targetRef="Gateway_06svi48" />
+    <bpmn:sequenceFlow id="Flow_1fgd0lf" name="Да" sourceRef="Gateway_06svi48" targetRef="Delete_Vacation_Black_Block">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${withdraw_vacation == true}' -&gt; '=withdraw_vacation = true'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${withdraw_vacation == true}' -&gt; '=withdraw_vacation = true'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=withdraw_vacation = "true"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="Delete_Vacation_Black_Block" name="Видалити заявку" implementation="##WebService">
+      <bpmn:documentation>- REVIEW: Attribute 'delegateExpression' on 'serviceTask' was mapped. Delegate call to '${deleteRequest}' was transformed to job type 'camunda-7-adapter'. Please review your implementation.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Attribute 'delegateExpression' on 'serviceTask' was mapped. Delegate call to '${deleteRequest}' was transformed to job type 'camunda-7-adapter'. Please review your implementation.</conversion:message>
+        <zeebe:taskDefinition type="deleteRequest" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1fgd0lf</bpmn:incoming>
+      <bpmn:outgoing>Flow_1d2zc11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_0xm4smn">
+      <bpmn:incoming>Flow_1d2zc11</bpmn:incoming>
+      <bpmn:incoming>Flow_0futcry</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1d2zc11" sourceRef="Delete_Vacation_Black_Block" targetRef="Event_0xm4smn" />
+    <bpmn:sequenceFlow id="Flow_0futcry" name="Нет" sourceRef="Gateway_06svi48" targetRef="Event_0xm4smn">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${withdraw_vacation == false}' -&gt; '=withdraw_vacation = false'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${withdraw_vacation == false}' -&gt; '=withdraw_vacation = false'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=withdraw_vacation = "false"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_06jrsiu">
+      <bpmn:documentation>- REVIEW: Attribute 'delegateExpression' on 'messageEventDefinition' was mapped. Delegate call to '${sendMail}' was transformed to job type 'camunda-7-adapter'. Please review your implementation.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Attribute 'delegateExpression' on 'messageEventDefinition' was mapped. Delegate call to '${sendMail}' was transformed to job type 'camunda-7-adapter'. Please review your implementation.</conversion:message>
+        <zeebe:taskDefinition type="sendMail" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1bl9w5r</bpmn:incoming>
+      <bpmn:incoming>Flow_0cng72u</bpmn:incoming>
+      <bpmn:incoming>Flow_1qq1pj0</bpmn:incoming>
+      <bpmn:incoming>Flow_06m9id6</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1wjlc2g" />
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_0hng8a4">
+      <bpmn:incoming>Flow_0x4cbxm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0yepbmq</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0cng72u</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0yepbmq" name="Согласовано" sourceRef="Gateway_0hng8a4" targetRef="Save_Vacation_Blank_Block">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${hr_approve_vacation == true}' -&gt; '=hr_approve_vacation = true'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${hr_approve_vacation == true}' -&gt; '=hr_approve_vacation = true'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isApprove = "true"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0cng72u" name="Не согласовано" sourceRef="Gateway_0hng8a4" targetRef="Event_06jrsiu">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${hr_approve_vacation == false}' -&gt; '=hr_approve_vacation = false'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${hr_approve_vacation == false}' -&gt; '=hr_approve_vacation = false'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isApprove = "false"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1qq1pj0" name="Не согласовано" sourceRef="Gateway_1qqni97" targetRef="Event_06jrsiu">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${management_approve_vacation == false}' -&gt; '=management_approve_vacation = false'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${management_approve_vacation == false}' -&gt; '=management_approve_vacation = false'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isApprove = "false"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0cbeh1g" name="Согласовано" sourceRef="Gateway_0lm9rpr" targetRef="Management_block">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${engineering_approve_vacation == true}' -&gt; '=engineering_approve_vacation = true'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${engineering_approve_vacation == true}' -&gt; '=engineering_approve_vacation = true'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isApprove = "true"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0ewxbjb" sourceRef="Gateway_Choice_Department" targetRef="Management_block">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${department == 0}' -&gt; '=department = 0'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${department == 0}' -&gt; '=department = 0'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=department = 1</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_0zmk78v">
+      <bpmn:incoming>Flow_0oe0x27</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jhqrux</bpmn:outgoing>
+      <bpmn:outgoing>Flow_06m9id6</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0oe0x27" sourceRef="Trade_Department_Block" targetRef="Gateway_0zmk78v" />
+    <bpmn:sequenceFlow id="Flow_1jhqrux" name="Согласовано" sourceRef="Gateway_0zmk78v" targetRef="Management_block">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${trade_approve_vacation == true}' -&gt; '=trade_approve_vacation = true'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${trade_approve_vacation == true}' -&gt; '=trade_approve_vacation = true'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isApprove = "true"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_06m9id6" name="Не согласовано" sourceRef="Gateway_0zmk78v" targetRef="Event_06jrsiu">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${trade_approve_vacation == false}' -&gt; '=trade_approve_vacation = false'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${trade_approve_vacation == false}' -&gt; '=trade_approve_vacation = false'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=isApprove = "false"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1y1js8e" sourceRef="Find_Initiator_Block" targetRef="Select_Vacation_Block" />
+    <bpmn:serviceTask id="Find_Initiator_Block" name="Пошук співробітника" implementation="##WebService">
+      <bpmn:documentation>- REVIEW: Attribute 'delegateExpression' on 'serviceTask' was mapped. Delegate call to '${findInitiator}' was transformed to job type 'camunda-7-adapter'. Please review your implementation.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Attribute 'delegateExpression' on 'serviceTask' was mapped. Delegate call to '${findInitiator}' was transformed to job type 'camunda-7-adapter'. Please review your implementation.</conversion:message>
+        <zeebe:taskDefinition type="findInitiator" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_00g5ill</bpmn:incoming>
+      <bpmn:outgoing>Flow_1y1js8e</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Management_block" name="Дирекція" implementation="##unspecified">
+      <bpmn:documentation>- TASK: Element 'formData' cannot be transformed. Please define a form key instead.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="TASK">Element 'formData' cannot be transformed. Please define a form key instead.</conversion:message>
+        <zeebe:formDefinition formId="application-approve" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ewxbjb</bpmn:incoming>
+      <bpmn:incoming>Flow_1jhqrux</bpmn:incoming>
+      <bpmn:incoming>Flow_0cbeh1g</bpmn:incoming>
+      <bpmn:outgoing>Flow_00s9cc0</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_00s9cc0" sourceRef="Management_block" targetRef="Gateway_1qqni97" />
+    <bpmn:userTask id="HR_Block" name="HR" implementation="##unspecified">
+      <bpmn:documentation>- TASK: Element 'formData' cannot be transformed. Please define a form key instead.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="TASK">Element 'formData' cannot be transformed. Please define a form key instead.</conversion:message>
+        <zeebe:formDefinition formId="application-approve" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0qcua41</bpmn:incoming>
+      <bpmn:outgoing>Flow_0x4cbxm</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0x4cbxm" sourceRef="HR_Block" targetRef="Gateway_0hng8a4" />
+    <bpmn:userTask id="Cancel_Vacation_Block" name="Відмінити відпустку" implementation="##unspecified">
+      <bpmn:documentation>- TASK: Element 'formData' cannot be transformed. Please define a form key instead.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="TASK">Element 'formData' cannot be transformed. Please define a form key instead.</conversion:message>
+        <zeebe:formDefinition formId="withdraw-vacation" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0draw90</bpmn:incoming>
+      <bpmn:outgoing>Flow_1tyr4d9</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1nqac2l" sourceRef="Gateway_Choice_Department" targetRef="Trade_Department_Block">
+      <bpmn:documentation>- REVIEW: Condition expression: Please review transformed expression: '${department == 1}' -&gt; '=department = 1'.
+</bpmn:documentation>
+      <bpmn:extensionElements>
+        <conversion:message severity="REVIEW">Condition expression: Please review transformed expression: '${department == 1}' -&gt; '=department = 1'.</conversion:message>
+      </bpmn:extensionElements>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=department = 2</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_00g5ill" sourceRef="Select_User" targetRef="Find_Initiator_Block" />
+    <bpmn:userTask id="Select_User" name="Вибір ініціатора">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="StartForm" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wniunm</bpmn:incoming>
+      <bpmn:outgoing>Flow_00g5ill</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1wniunm" sourceRef="Search_All_Users" targetRef="Select_User" />
+    <bpmn:serviceTask id="Search_All_Users" name="Пошук усіх користувачі">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="findAllUsers" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wniunm</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:textAnnotation id="TextAnnotation_0kr9c10">
+      <bpmn:text>Преобразование должности сотркдника в код отдела</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_071q2jv" associationDirection="None" sourceRef="Position_Maping_Block" targetRef="TextAnnotation_0kr9c10" />
+    <bpmn:textAnnotation id="TextAnnotation_1vakcen">
+      <bpmn:text>Напоминание за день до отпуска</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1tzbtki" associationDirection="None" sourceRef="event_remind" targetRef="TextAnnotation_1vakcen" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="task-vacation">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEventProcessStarted">
+        <dc:Bounds x="162" y="272" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="160" y="308" width="41" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0emett1_di" bpmnElement="Select_Vacation_Block">
+        <dc:Bounds x="790" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_03gjkb6_di" bpmnElement="Position_Maping_Block">
+        <dc:Bounds x="950" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1cty7gu_di" bpmnElement="Gateway_Choice_Department" isMarkerVisible="true">
+        <dc:Bounds x="1115" y="265" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0cr45qo_di" bpmnElement="Trade_Department_Block">
+        <dc:Bounds x="1200" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0thmtl3_di" bpmnElement="Engineering_Department_Block">
+        <dc:Bounds x="1200" y="340" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0lm9rpr_di" bpmnElement="Gateway_0lm9rpr" isMarkerVisible="true">
+        <dc:Bounds x="1355" y="355" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1qqni97_di" bpmnElement="Gateway_1qqni97" isMarkerVisible="true">
+        <dc:Bounds x="1675" y="265" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0itfdlr_di" bpmnElement="Save_Vacation_Blank_Block">
+        <dc:Bounds x="2130" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_05bz6j3_di" bpmnElement="event_remind">
+        <dc:Bounds x="2282" y="272" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_06svi48_di" bpmnElement="Gateway_06svi48" isMarkerVisible="true">
+        <dc:Bounds x="2525" y="265" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0e4rps1_di" bpmnElement="Delete_Vacation_Black_Block">
+        <dc:Bounds x="2620" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0xm4smn_di" bpmnElement="Event_0xm4smn">
+        <dc:Bounds x="2632" y="272" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ax7wvj_di" bpmnElement="Event_06jrsiu">
+        <dc:Bounds x="1562" y="412" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0hng8a4_di" bpmnElement="Gateway_0hng8a4" isMarkerVisible="true">
+        <dc:Bounds x="1995" y="265" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0zmk78v_di" bpmnElement="Gateway_0zmk78v" isMarkerVisible="true">
+        <dc:Bounds x="1355" y="175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1qwmv0t_di" bpmnElement="Find_Initiator_Block">
+        <dc:Bounds x="631" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xehqyh_di" bpmnElement="Management_block">
+        <dc:Bounds x="1450" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1qgce5h_di" bpmnElement="HR_Block">
+        <dc:Bounds x="1830" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_010jjog_di" bpmnElement="Cancel_Vacation_Block">
+        <dc:Bounds x="2370" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_152jxyn_di" bpmnElement="Select_User">
+        <dc:Bounds x="450" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0fzxk9r_di" bpmnElement="Search_All_Users">
+        <dc:Bounds x="270" y="250" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0kr9c10_di" bpmnElement="TextAnnotation_0kr9c10">
+        <dc:Bounds x="870" y="396" width="140" height="68" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1vakcen_di" bpmnElement="TextAnnotation_1vakcen">
+        <dc:Bounds x="2310" y="150" width="100" height="53" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_08va5r8_di" bpmnElement="SequenceFlow1">
+        <di:waypoint x="198" y="290" />
+        <di:waypoint x="270" y="290" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="337.5" y="110" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17kuhu7_di" bpmnElement="Flow_17kuhu7">
+        <di:waypoint x="890" y="290" />
+        <di:waypoint x="950" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0o5z3dq_di" bpmnElement="Flow_0o5z3dq">
+        <di:waypoint x="1050" y="290" />
+        <di:waypoint x="1115" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gyzu9a_di" bpmnElement="Flow_0gyzu9a">
+        <di:waypoint x="1140" y="315" />
+        <di:waypoint x="1140" y="380" />
+        <di:waypoint x="1200" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bl9w5r_di" bpmnElement="Flow_1bl9w5r">
+        <di:waypoint x="1380" y="405" />
+        <di:waypoint x="1380" y="430" />
+        <di:waypoint x="1562" y="430" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1409" y="413" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07n06e3_di" bpmnElement="Flow_07n06e3">
+        <di:waypoint x="1300" y="380" />
+        <di:waypoint x="1355" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qcua41_di" bpmnElement="Flow_0qcua41">
+        <di:waypoint x="1725" y="290" />
+        <di:waypoint x="1830" y="290" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1737" y="272" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qfru3l_di" bpmnElement="Flow_1qfru3l">
+        <di:waypoint x="2230" y="290" />
+        <di:waypoint x="2282" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0draw90_di" bpmnElement="Flow_0draw90">
+        <di:waypoint x="2318" y="290" />
+        <di:waypoint x="2370" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tyr4d9_di" bpmnElement="Flow_1tyr4d9">
+        <di:waypoint x="2470" y="290" />
+        <di:waypoint x="2525" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fgd0lf_di" bpmnElement="Flow_1fgd0lf">
+        <di:waypoint x="2550" y="265" />
+        <di:waypoint x="2550" y="120" />
+        <di:waypoint x="2620" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2559" y="190" width="13" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1d2zc11_di" bpmnElement="Flow_1d2zc11">
+        <di:waypoint x="2720" y="120" />
+        <di:waypoint x="2770" y="120" />
+        <di:waypoint x="2770" y="290" />
+        <di:waypoint x="2668" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0futcry_di" bpmnElement="Flow_0futcry">
+        <di:waypoint x="2575" y="290" />
+        <di:waypoint x="2632" y="290" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2594" y="272" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yepbmq_di" bpmnElement="Flow_0yepbmq">
+        <di:waypoint x="2045" y="290" />
+        <di:waypoint x="2130" y="290" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2054" y="272" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cng72u_di" bpmnElement="Flow_0cng72u">
+        <di:waypoint x="2020" y="315" />
+        <di:waypoint x="2020" y="490" />
+        <di:waypoint x="1580" y="490" />
+        <di:waypoint x="1580" y="448" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1719" y="473" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qq1pj0_di" bpmnElement="Flow_1qq1pj0">
+        <di:waypoint x="1700" y="315" />
+        <di:waypoint x="1700" y="430" />
+        <di:waypoint x="1598" y="430" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1609" y="413" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cbeh1g_di" bpmnElement="Flow_0cbeh1g">
+        <di:waypoint x="1405" y="380" />
+        <di:waypoint x="1490" y="380" />
+        <di:waypoint x="1490" y="330" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1416" y="363" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ewxbjb_di" bpmnElement="Flow_0ewxbjb">
+        <di:waypoint x="1165" y="290" />
+        <di:waypoint x="1450" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0oe0x27_di" bpmnElement="Flow_0oe0x27">
+        <di:waypoint x="1300" y="200" />
+        <di:waypoint x="1355" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jhqrux_di" bpmnElement="Flow_1jhqrux">
+        <di:waypoint x="1405" y="200" />
+        <di:waypoint x="1490" y="200" />
+        <di:waypoint x="1490" y="250" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1426" y="183" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06m9id6_di" bpmnElement="Flow_06m9id6">
+        <di:waypoint x="1380" y="175" />
+        <di:waypoint x="1380" y="150" />
+        <di:waypoint x="1580" y="150" />
+        <di:waypoint x="1580" y="412" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1419" y="132" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y1js8e_di" bpmnElement="Flow_1y1js8e">
+        <di:waypoint x="731" y="290" />
+        <di:waypoint x="790" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00s9cc0_di" bpmnElement="Flow_00s9cc0">
+        <di:waypoint x="1550" y="290" />
+        <di:waypoint x="1675" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0x4cbxm_di" bpmnElement="Flow_0x4cbxm">
+        <di:waypoint x="1930" y="290" />
+        <di:waypoint x="1995" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nqac2l_di" bpmnElement="Flow_1nqac2l">
+        <di:waypoint x="1140" y="265" />
+        <di:waypoint x="1140" y="200" />
+        <di:waypoint x="1200" y="200" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="280" y="-110" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00g5ill_di" bpmnElement="Flow_00g5ill">
+        <di:waypoint x="550" y="290" />
+        <di:waypoint x="631" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wniunm_di" bpmnElement="Flow_1wniunm">
+        <di:waypoint x="370" y="290" />
+        <di:waypoint x="450" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_071q2jv_di" bpmnElement="Association_071q2jv">
+        <di:waypoint x="974" y="330" />
+        <di:waypoint x="930" y="396" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1tzbtki_di" bpmnElement="Association_1tzbtki">
+        <di:waypoint x="2308" y="274" />
+        <di:waypoint x="2342" y="203" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

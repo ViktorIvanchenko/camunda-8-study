@@ -1,0 +1,116 @@
+{
+  "components": [
+    {
+      "label": "Ініціатор заявки",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1j1woie",
+        "columns": null
+      },
+      "id": "Field_0elzu7r",
+      "key": "vacation_full_name",
+      "disabled": true
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Початок періода",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_0shqzr2",
+        "columns": null
+      },
+      "id": "Field_1ow8z3d",
+      "key": "vacation_start_date",
+      "disabled": true
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Кінець періода",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_0shqzr2",
+        "columns": null
+      },
+      "id": "Field_0sty004",
+      "key": "vacation_end_date",
+      "disabled": true
+    },
+    {
+      "label": "Тип відпустки",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_05efy5r",
+        "columns": null
+      },
+      "id": "Field_1gjzusb",
+      "key": "vacationType",
+      "disabled": true
+    },
+    {
+      "values": [
+        {
+          "label": "Продажі",
+          "value": "trade_approve_vacation"
+        },
+        {
+          "label": "Інженерний",
+          "value": "engineering_approve_vacation"
+        },
+        {
+          "label": "Менеджмент",
+          "value": "management_approve_vacation"
+        },
+        {
+          "label": "HR",
+          "value": "hr_approve_vacation"
+        }
+      ],
+      "label": "Відділ погоджувача",
+      "type": "select",
+      "layout": {
+        "row": "Row_05efy5r",
+        "columns": null
+      },
+      "id": "Field_1kkseud",
+      "key": "department_approver",
+      "disabled": false,
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Погоджено",
+          "value": "true"
+        },
+        {
+          "label": "Відхилено",
+          "value": "false"
+        }
+      ],
+      "label": "Результат погодження",
+      "type": "radio",
+      "layout": {
+        "row": "Row_1z103m2",
+        "columns": null
+      },
+      "id": "Field_0fh67z6",
+      "key": "isApprove",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "application-approve",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.23.0"
+  },
+  "schemaVersion": 16
+}

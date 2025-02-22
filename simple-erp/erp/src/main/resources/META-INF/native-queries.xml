@@ -1,0 +1,22 @@
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
+                 version="2.1">
+    <named-native-query name="findEquipmentForDecommissioning" result-set-mapping="mapSerialNumberToString">
+        <query>
+            SELECT serial_number
+            FROM
+                (SELECT
+                    e.serial_number AS serial_number,
+                    e.commissioning_date AS c_date,
+                    etype.life_time AS life_time
+                FROM equipment e
+                INNER JOIN equipment_type etype ON etype.id = e.type
+                WHERE e.decommissioning_date IS NULL AND etype.life_time IS NOT NULL) AS prepared
+            WHERE current_date > (c_date + make_interval(months => life_time))
+        </query>
+    </named-native-query>
+    <sql-result-set-mapping name="mapSerialNumberToString">
+        <column-result name="serial_number" class="java.lang.String"/>
+    </sql-result-set-mapping>
+</entity-mappings>

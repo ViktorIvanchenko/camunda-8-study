@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet  id="fill-maintenance-list"  author="vivanchenko">
+        <insert tableName="maintenance">
+            <column name="id" valueNumeric="2001" />
+            <column name="title" value="Ежедневное ТО принтера" />
+        </insert>
+        <insert tableName="maintenance">
+            <column name="id" valueNumeric="2002" />
+            <column name="title" value="Дозаправка картриджа" />
+        </insert>
+        <insert tableName="maintenance">
+            <column name="id" valueNumeric="2003" />
+            <column name="title" value="Замена картриджа" />
+        </insert>
+        <insert tableName="maintenance">
+            <column name="id" valueNumeric="2004" />
+            <column name="title" value="Средний ремонт принтера" />
+        </insert>
+        <insert tableName="maintenance">
+            <column name="id" valueNumeric="2005" />
+            <column name="title" value="Регламентное обслуживание принтера" />
+        </insert>
+        <insert tableName="maintenance">
+            <column name="id" valueNumeric="2006" />
+            <column name="title" value="Полугодовое обслуживание ПК" />
+        </insert>
+        <insert tableName="maintenance">
+            <column name="id" valueNumeric="2007" />
+            <column name="title" value="Текущий ремонт ПК" />
+        </insert>
+        <insert tableName="maintenance">
+            <column name="id" valueNumeric="2008" />
+            <column name="title" value="Полугодовое обслуживание сервера" />
+        </insert>
+        <insert tableName="maintenance">
+            <column name="id" valueNumeric="2009" />
+            <column name="title" value="Обслуживание кабельной линии" />
+        </insert>
+    </changeSet>
+
+    <changeSet  id="map-consumption-rates-to-maintenance"  author="vivanchenko">
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2001" />
+            <column name="consumption_rate" valueNumeric="1060" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2002" />
+            <column name="consumption_rate" valueNumeric="1060" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2002" />
+            <column name="consumption_rate" valueNumeric="1056" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2003" />
+            <column name="consumption_rate" valueNumeric="1060" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2003" />
+            <column name="consumption_rate" valueNumeric="1059" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2003" />
+            <column name="consumption_rate" valueNumeric="1058" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2004" />
+            <column name="consumption_rate" valueNumeric="1061" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2005" />
+            <column name="consumption_rate" valueNumeric="1060" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2005" />
+            <column name="consumption_rate" valueNumeric="1056" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2006" />
+            <column name="consumption_rate" valueNumeric="1060" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2007" />
+            <column name="consumption_rate" valueNumeric="1061" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2007" />
+            <column name="consumption_rate" valueNumeric="1065" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2008" />
+            <column name="consumption_rate" valueNumeric="1066" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2008" />
+            <column name="consumption_rate" valueNumeric="1062" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2009" />
+            <column name="consumption_rate" valueNumeric="1063" />
+        </insert>
+        <insert tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" valueNumeric="2009" />
+            <column name="consumption_rate" valueNumeric="1067" />
+        </insert>
+    </changeSet>
+
+    <changeSet  id="fill-equipment-types"  author="vivanchenko">
+        <insert tableName="equipment_type">
+            <column name="id" valueNumeric="3001" />
+            <column name="title" value="Ноутбук НР" />
+            <column  name="life_time" valueNumeric="96" />
+        </insert>
+        <insert tableName="equipment_type">
+            <column name="id" valueNumeric="3002" />
+            <column name="title" value="Ноутбук Lenovo" />
+            <column  name="life_time" valueNumeric="60" />
+        </insert>
+        <insert tableName="equipment_type">
+            <column name="id" valueNumeric="3003" />
+            <column name="title" value="Ноутбук Dell" />
+            <column  name="life_time" valueNumeric="72" />
+        </insert>
+        <insert tableName="equipment_type">
+            <column name="id" valueNumeric="3004" />
+            <column name="title" value="Ноутбук MSI" />
+            <column  name="life_time" valueNumeric="24" />
+        </insert>
+        <insert tableName="equipment_type">
+            <column name="id" valueNumeric="3005" />
+            <column name="title" value="ПК с монитором, клавиатурой и мишью" />
+            <column  name="life_time" valueNumeric="60" />
+        </insert>
+        <insert tableName="equipment_type">
+            <column name="id" valueNumeric="3006" />
+            <column name="title" value="Принтер OKI цветной" />
+            <column  name="life_time" valueNumeric="36" />
+        </insert>
+        <insert tableName="equipment_type">
+            <column name="id" valueNumeric="3007" />
+            <column name="title" value="МФУ Canon ч/б" />
+            <column  name="life_time" valueNumeric="36" />
+        </insert>
+        <insert tableName="equipment_type">
+            <column name="id" valueNumeric="3008" />
+            <column name="title" value="Принтер матричный" />
+            <column  name="life_time" valueNumeric="120" />
+        </insert>
+        <insert tableName="equipment_type">
+            <column name="id" valueNumeric="3009" />
+            <column name="title" value="Проектор" />
+            <column  name="life_time" valueNumeric="55" />
+        </insert>
+        <insert tableName="equipment_type">
+            <column name="id" valueNumeric="3010" />
+            <column name="title" value="IP-телефон Grandstream" />
+            <column  name="life_time" valueNumeric="12" />
+        </insert>
+    </changeSet>
+
+    <changeSet  id="map-equipment-types-to-maintenance"  author="vivanchenko">
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2006" />
+            <column name="equipment_type" valueNumeric="3001" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2007" />
+            <column name="equipment_type" valueNumeric="3001" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2006" />
+            <column name="equipment_type" valueNumeric="3002" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2007" />
+            <column name="equipment_type" valueNumeric="3002" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2006" />
+            <column name="equipment_type" valueNumeric="3003" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2007" />
+            <column name="equipment_type" valueNumeric="3003" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2006" />
+            <column name="equipment_type" valueNumeric="3004" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2007" />
+            <column name="equipment_type" valueNumeric="3004" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2006" />
+            <column name="equipment_type" valueNumeric="3005" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2007" />
+            <column name="equipment_type" valueNumeric="3005" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2003" />
+            <column name="equipment_type" valueNumeric="3006" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2004" />
+            <column name="equipment_type" valueNumeric="3006" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2005" />
+            <column name="equipment_type" valueNumeric="3006" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2002" />
+            <column name="equipment_type" valueNumeric="3007" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2003" />
+            <column name="equipment_type" valueNumeric="3007" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2004" />
+            <column name="equipment_type" valueNumeric="3007" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2005" />
+            <column name="equipment_type" valueNumeric="3007" />
+        </insert>
+        <insert tableName="equipment_maintenances">
+            <column name="maintenance_type" valueNumeric="2009" />
+            <column name="equipment_type" valueNumeric="3010" />
+        </insert>
+    </changeSet>
+
+    <changeSet  id="add-init-supply-rates"  author="vivanchenko">
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4001" />
+            <column name="title" value="1 ноутбук НР" />
+            <column name="equipment_type_id" valueNumeric="3001" />
+            <column name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4011" />
+            <column name="title" value="2 ноутбука НР" />
+            <column name="equipment_type_id" valueNumeric="3001" />
+            <column name="amount" valueNumeric="2" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4002" />
+            <column name="title" value="1 ноутбук Lenovo" />
+            <column name="equipment_type_id" valueNumeric="3002" />
+            <column name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4021" />
+            <column name="title" value="2 ноутбука Lenovo" />
+            <column name="equipment_type_id" valueNumeric="3002" />
+            <column name="amount" valueNumeric="2" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4003" />
+            <column name="title" value="1 ноутбук Dell" />
+            <column name="equipment_type_id" valueNumeric="3003" />
+            <column name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4031" />
+            <column name="title" value="2 ноутбука Dell" />
+            <column name="equipment_type_id" valueNumeric="3003" />
+            <column name="amount" valueNumeric="2" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4004" />
+            <column name="title" value="1 ноутбук MSI" />
+            <column name="equipment_type_id" valueNumeric="3004" />
+            <column name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4005" />
+            <column name="title" value="1 рабочий ПК" />
+            <column name="equipment_type_id" valueNumeric="3005" />
+            <column name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4006" />
+            <column name="title" value="1 цветной принтер" />
+            <column name="equipment_type_id" valueNumeric="3006" />
+            <column name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4007" />
+            <column name="title" value="1 МФУ" />
+            <column name="equipment_type_id" valueNumeric="3007" />
+            <column name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4009" />
+            <column name="title" value="1 проектор" />
+            <column name="equipment_type_id" valueNumeric="3009" />
+            <column name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4010" />
+            <column name="title" value="1 телефон на рабочее место" />
+            <column name="equipment_type_id" valueNumeric="3010" />
+            <column name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="supply_rates">
+            <column name="id" valueNumeric="4110" />
+            <column name="title" value="2 телефона на рабочее место" />
+            <column name="equipment_type_id" valueNumeric="3010" />
+            <column name="amount" valueNumeric="2" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

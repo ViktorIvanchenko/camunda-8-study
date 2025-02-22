@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet  id="fill-init-equipment-list"  author="vivanchenko">
+        <insert tableName="equipment">
+            <column name="serial_number" value="3001SN1" />
+            <column name="type" valueNumeric="3001" />
+            <column name="purchase_price" valueNumeric="25023.2" />
+            <column name="commissioning_date" valueDate="2000-02-12" />
+            <column name="employee_id" valueNumeric="111" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3001SN2" />
+            <column name="type" valueNumeric="3001" />
+            <column name="purchase_price" valueNumeric="30500" />
+            <column name="commissioning_date" valueDate="2019-05-12" />
+            <column name="employee_id" valueNumeric="111" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3001SN3" />
+            <column name="type" valueNumeric="3001" />
+            <column name="purchase_price" valueNumeric="30500" />
+            <column name="commissioning_date" valueDate="2017-04-02" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3001SN4" />
+            <column name="type" valueNumeric="3001" />
+            <column name="purchase_price" valueNumeric="22000" />
+            <column name="commissioning_date" valueDate="2016-05-11" />
+            <column name="employee_id" valueNumeric="121" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3001SN10" />
+            <column name="type" valueNumeric="3001" />
+            <column name="purchase_price" valueNumeric="30500" />
+            <column name="commissioning_date" valueDate="2015-02-12" />
+            <column name="employee_id" valueNumeric="211" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3001SN11" />
+            <column name="type" valueNumeric="3001" />
+            <column name="purchase_price" valueNumeric="30500" />
+            <column name="commissioning_date" valueDate="2012-06-27" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3001SN12" />
+            <column name="type" valueNumeric="3001" />
+            <column name="purchase_price" valueNumeric="18000" />
+            <column name="commissioning_date" valueDate="2000-02-12" />
+            <column name="decommissioning_date" valueDate="2020-02-12" />
+            <column name="employee_id" valueNumeric="151" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3002SN1" />
+            <column name="type" valueNumeric="3002" />
+            <column name="purchase_price" valueNumeric="25000" />
+            <column name="commissioning_date" valueDate="2014-02-12" />
+            <column name="employee_id" valueNumeric="221" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3002SN2" />
+            <column name="type" valueNumeric="3002" />
+            <column name="purchase_price" valueNumeric="25000" />
+            <column name="commissioning_date" valueDate="2013-09-26" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3002SN3" />
+            <column name="type" valueNumeric="3002" />
+            <column name="purchase_price" valueNumeric="25000" />
+            <column name="commissioning_date" valueDate="2018-12-03" />
+            <column name="employee_id" valueNumeric="241" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3002SN4" />
+            <column name="type" valueNumeric="3002" />
+            <column name="purchase_price" valueNumeric="25000" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3002SN5" />
+            <column name="type" valueNumeric="3002" />
+            <column name="purchase_price" valueNumeric="25000" />
+            <column name="commissioning_date" valueDate="2016-02-12" />
+            <column name="employee_id" valueNumeric="141" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3002SN6" />
+            <column name="type" valueNumeric="3002" />
+            <column name="purchase_price" valueNumeric="25000" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3003SN1" />
+            <column name="type" valueNumeric="3003" />
+            <column name="purchase_price" valueNumeric="17000" />
+            <column name="commissioning_date" valueDate="2015-02-12" />
+            <column name="employee_id" valueNumeric="321" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3003SN2" />
+            <column name="type" valueNumeric="3003" />
+            <column name="purchase_price" valueNumeric="17000" />
+            <column name="commissioning_date" valueDate="2011-02-12" />
+            <column name="employee_id" valueNumeric="321" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3003SN3" />
+            <column name="type" valueNumeric="3003" />
+            <column name="purchase_price" valueNumeric="17000" />
+            <column name="commissioning_date" valueDate="2011-02-12" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3003SN4" />
+            <column name="type" valueNumeric="3003" />
+            <column name="purchase_price" valueNumeric="17000" />
+            <column name="commissioning_date" valueDate="2008-02-12" />
+            <column name="employee_id" valueNumeric="331" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3003SN5" />
+            <column name="type" valueNumeric="3003" />
+            <column name="purchase_price" valueNumeric="17000" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3003SN6" />
+            <column name="type" valueNumeric="3003" />
+            <column name="purchase_price" valueNumeric="17000" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3004SN1" />
+            <column name="type" valueNumeric="3004" />
+            <column name="purchase_price" valueNumeric="16000" />
+            <column name="commissioning_date" valueDate="2008-05-11" />
+            <column name="employee_id" valueNumeric="131" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3004SN2" />
+            <column name="type" valueNumeric="3004" />
+            <column name="purchase_price" valueNumeric="16000" />
+            <column name="commissioning_date" valueDate="2019-02-12" />
+            <column name="employee_id" valueNumeric="221" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3004SN3" />
+            <column name="type" valueNumeric="3004" />
+            <column name="purchase_price" valueNumeric="16000" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3004SN4" />
+            <column name="type" valueNumeric="3004" />
+            <column name="purchase_price" valueNumeric="16000" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3004SN5" />
+            <column name="type" valueNumeric="3004" />
+            <column name="purchase_price" valueNumeric="16000" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3004SN6" />
+            <column name="type" valueNumeric="3004" />
+            <column name="purchase_price" valueNumeric="16000" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3005SN1" />
+            <column name="type" valueNumeric="3005" />
+            <column name="purchase_price" valueNumeric="19220.50" />
+            <column name="commissioning_date" valueDate="2015-02-12" />
+            <column name="employee_id" valueNumeric="311" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3005SN2" />
+            <column name="type" valueNumeric="3005" />
+            <column name="purchase_price" valueNumeric="19220.50" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3005SN3" />
+            <column name="type" valueNumeric="3005" />
+            <column name="purchase_price" valueNumeric="19220.50" />
+            <column name="commissioning_date" valueDate="2007-02-12" />
+            <column name="employee_id" valueNumeric="121" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3005SN4" />
+            <column name="type" valueNumeric="3005" />
+            <column name="purchase_price" valueNumeric="19220.50" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3006SN1" />
+            <column name="type" valueNumeric="3006" />
+            <column name="purchase_price" valueNumeric="33500" />
+            <column name="commissioning_date" valueDate="2013-09-12" />
+            <column name="employee_id" valueNumeric="211" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3007SN1" />
+            <column name="type" valueNumeric="3007" />
+            <column name="purchase_price" valueNumeric="4505.50" />
+            <column name="commissioning_date" valueDate="2009-11-12" />
+            <column name="employee_id" valueNumeric="121" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3007SN2" />
+            <column name="type" valueNumeric="3007" />
+            <column name="purchase_price" valueNumeric="4505.50" />
+            <column name="commissioning_date" valueDate="2015-02-12" />
+            <column name="decommissioning_date" valueDate="2018-02-12" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3007SN3" />
+            <column name="type" valueNumeric="3007" />
+            <column name="purchase_price" valueNumeric="4505.50" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3007SN4" />
+            <column name="type" valueNumeric="3007" />
+            <column name="purchase_price" valueNumeric="4505.50" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3009SN1" />
+            <column name="type" valueNumeric="3009" />
+            <column name="purchase_price" valueNumeric="13650" />
+            <column name="commissioning_date" valueDate="2020-11-12" />
+            <column name="employee_id" valueNumeric="211" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3009SN2" />
+            <column name="type" valueNumeric="3009" />
+            <column name="purchase_price" valueNumeric="13650" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN1" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+            <column name="commissioning_date" valueDate="2017-02-11" />
+            <column name="employee_id" valueNumeric="131" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN2" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+            <column name="commissioning_date" valueDate="2019-02-11" />
+            <column name="employee_id" valueNumeric="111" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN3" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+            <column name="commissioning_date" valueDate="2016-02-11" />
+            <column name="employee_id" valueNumeric="121" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN4" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+            <column name="commissioning_date" valueDate="2017-02-11" />
+            <column name="employee_id" valueNumeric="311" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN5" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+            <column name="commissioning_date" valueDate="2017-02-11" />
+            <column name="employee_id" valueNumeric="321" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN6" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+            <column name="commissioning_date" valueDate="2017-02-11" />
+            <column name="employee_id" valueNumeric="141" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN7" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+            <column name="commissioning_date" valueDate="2013-02-11" />
+            <column name="employee_id" valueNumeric="221" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN8" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+            <column name="commissioning_date" valueDate="2021-02-11" />
+            <column name="employee_id" valueNumeric="331" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN9" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN10" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+        </insert>
+        <insert tableName="equipment">
+            <column name="serial_number" value="3010SN11" />
+            <column name="type" valueNumeric="3010" />
+            <column name="purchase_price" valueNumeric="1500" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

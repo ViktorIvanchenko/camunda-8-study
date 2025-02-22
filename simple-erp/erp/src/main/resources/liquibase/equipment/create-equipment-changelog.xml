@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet  id="add-equipment-related-tables"  author="vivanchenko">
+        <createSequence sequenceName="maintenance_seq" startValue="116000" />
+        <createTable  tableName="maintenance">
+            <column  name="id" type="bigint">
+                <constraints primaryKey="true" />
+            </column>
+            <column  name="title" type="text"/>
+        </createTable>
+        <createTable tableName="maintenance_consumption_rate">
+            <column name="maintenance_type" type="bigint">
+                <constraints referencedTableName="maintenance" referencedColumnNames="id" foreignKeyName="maintenance_fk"/>
+            </column>
+            <column name="consumption_rate" type="bigint">
+                <constraints referencedTableName="consumption_rates" referencedColumnNames="id" foreignKeyName="consumption_rates_fk"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="equipment_types_seq" startValue="33000" />
+        <createTable  tableName="equipment_type">
+            <column  name="id"  type="bigint">
+                <constraints primaryKey="true" />
+            </column>
+            <column  name="title" type="text"/>
+            <column  name="description" type="text"/>
+            <column  name="life_time" type="integer"/>
+        </createTable>
+        <createTable tableName="equipment_maintenances">
+            <column name="equipment_type" type="bigint">
+                <constraints referencedTableName="equipment_type" referencedColumnNames="id" foreignKeyName="equipment_type_fk"/>
+            </column>
+            <column name="maintenance_type" type="bigint">
+                <constraints referencedTableName="maintenance" referencedColumnNames="id" foreignKeyName="maintenance_fk"/>
+            </column>
+        </createTable>
+        <createTable tableName="equipment_consumption_rates">
+            <column name="equipment_type" type="bigint">
+                <constraints referencedTableName="equipment_type" referencedColumnNames="id" foreignKeyName="equipment_type_fk"/>
+            </column>
+            <column name="consumption_rate" type="bigint">
+                <constraints referencedTableName="consumption_rates" referencedColumnNames="id" foreignKeyName="consumption_rates_fk"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="equipment">
+            <column name="serial_number" type="text">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="type" type="bigint">
+                <constraints referencedTableName="equipment_type" referencedColumnNames="id" foreignKeyName="equipment_type_fk"/>
+            </column>
+            <column name="purchase_price" type="decimal" />
+            <column name="balance_price" type="decimal" />
+            <column name="commissioning_date" type="date" />
+            <column name="decommissioning_date" type="date" />
+            <column name="employee_id" type="bigint">
+                <constraints referencedTableName="employee" referencedColumnNames="id" foreignKeyName="employee_fk"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="rates_seq" startValue="22000" />
+        <createTable tableName="supply_rates">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="title" type="text" />
+            <column name="equipment_type_id" type="bigint">
+                <constraints referencedTableName="equipment_type" referencedColumnNames="id" foreignKeyName="equipment_type_fk"/>
+            </column>
+            <column name="amount" type="integer" />
+        </createTable>
+        <createTable tableName="positions_supply_rates">
+            <column name="position_id" type="bigint">
+                <constraints referencedTableName="org_position" referencedColumnNames="id" foreignKeyName="org_position_fk"/>
+            </column>
+            <column name="sup_rate_id" type="bigint">
+                <constraints referencedTableName="supply_rates" referencedColumnNames="id" foreignKeyName="supply_rates_fk"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,24 @@
+{
+  "components": [
+    {
+      "label": "Вибір ініціатора заявки",
+      "type": "select",
+      "layout": {
+        "row": "Row_04dgvls",
+        "columns": null
+      },
+      "id": "Field_19fxfet",
+      "key": "initiatorID",
+      "valuesExpression": "=employees"
+    }
+  ],
+  "type": "default",
+  "id": "StartForm",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.23.0"
+  },
+  "schemaVersion": 16
+}
