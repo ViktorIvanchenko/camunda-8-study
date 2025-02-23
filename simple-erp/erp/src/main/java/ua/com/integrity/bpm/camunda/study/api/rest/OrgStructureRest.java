@@ -11,12 +11,12 @@ import ua.com.integrity.bpm.camunda.study.dto.equipment.SupplyRateDto;
 import ua.com.integrity.bpm.camunda.study.dto.vacation.VacationDto;
 import ua.com.integrity.bpm.camunda.study.service.OrgStructureService;
 
-import javax.inject.Inject;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.inject.Inject;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.util.List;
 import java.util.Optional;
 

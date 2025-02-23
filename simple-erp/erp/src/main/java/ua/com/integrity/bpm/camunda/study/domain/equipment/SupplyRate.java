@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import static ua.com.integrity.bpm.camunda.study.domain.DBConstants.RATES_SEQUENCE;
 

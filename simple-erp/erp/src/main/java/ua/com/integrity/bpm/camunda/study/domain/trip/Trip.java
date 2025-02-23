@@ -9,7 +9,7 @@ import ua.com.integrity.bpm.camunda.study.domain.Employee;
 import ua.com.integrity.bpm.camunda.study.dto.trip.TripType;
 import ua.com.integrity.bpm.camunda.study.dto.vacation.VacationType;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity

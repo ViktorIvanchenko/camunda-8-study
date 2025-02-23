@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import ua.com.integrity.bpm.camunda.study.dto.equipment.decommissioning.EquipmentDecommissioningNotificationDto;
 
-import javax.annotation.Resource;
-import javax.inject.Inject;
-import javax.jms.*;
+import jakarta.annotation.Resource;
+import jakarta.inject.Inject;
+import jakarta.jms.*;
 
 public class NotificationProducerImpl implements NotificationProducer {
 

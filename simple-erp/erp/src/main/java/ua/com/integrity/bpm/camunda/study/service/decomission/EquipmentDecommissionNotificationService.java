@@ -4,9 +4,9 @@ import ua.com.integrity.bpm.camunda.study.api.jms.NotificationProducer;
 import ua.com.integrity.bpm.camunda.study.dao.equipment.EquipmentDao;
 import ua.com.integrity.bpm.camunda.study.dto.equipment.decommissioning.EquipmentDecommissioningNotificationDto;
 
-import javax.ejb.Schedule;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
+import jakarta.ejb.Schedule;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import java.util.List;
 
 @Stateless

@@ -9,49 +9,47 @@
     <modules>
         <module>erp</module>
         <module>erp-dto</module>
-        <module>erp-api</module>
     </modules>
     <packaging>pom</packaging>
 
     <name>simple-erp</name>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <wildfly.server.verion>26.1.3.Final</wildfly.server.verion>
-        <java.ee.api.verion>8.0</java.ee.api.verion>
-        <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
-        <lombok.version>1.18.28</lombok.version>
-        <maven.version>3.9.5</maven.version>
-        <liquibase.maven.plugin.version>4.27.0</liquibase.maven.plugin.version>
-        <wildfly.maven.plugin.version>5.0.0.Final</wildfly.maven.plugin.version>
+        <wildfly.server.version>35.0.1.Final</wildfly.server.version>
+        <wildfly.microprofile.version>33.0.2.Final</wildfly.microprofile.version>
+        <org.mapstruct.version>1.6.3</org.mapstruct.version>
+        <lombok.version>1.18.36</lombok.version>
+        <maven.version>3.9.9</maven.version>
+        <liquibase.maven.plugin.version>4.31.0</liquibase.maven.plugin.version>
+        <wildfly.maven.plugin.version>5.1.2.Final</wildfly.maven.plugin.version>
         <maven.failsafe.plugin.version>3.1.0</maven.failsafe.plugin.version>
         <maven.surefire.plugin.version>3.1.0</maven.surefire.plugin.version>
         <maven.wrapper.plugin.version>3.2.0</maven.wrapper.plugin.version>
-        <maven.openapi-gen.plugin.version>7.6.0</maven.openapi-gen.plugin.version>
+        <maven.openapi-gen.plugin.version>7.11.0</maven.openapi-gen.plugin.version>
         <maven.deploy.skip>true</maven.deploy.skip>
 
 
-        <postgresql.jdbc.version>42.7.3</postgresql.jdbc.version>
-        <commons.io.version>2.16.1</commons.io.version>
-        <commons.lang.version>3.14.0</commons.lang.version>
+        <postgresql.jdbc.version>42.7.5</postgresql.jdbc.version>
+        <commons.io.version>2.18.0</commons.io.version>
+        <commons.lang.version>3.17.0</commons.lang.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
-                <artifactId>wildfly-jakartaee8-with-tools</artifactId>
-                <version>${wildfly.server.verion}</version>
+                <artifactId>wildfly-ee-with-tools</artifactId>
+                <version>${wildfly.server.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-microprofile</artifactId>
-                <version>${wildfly.server.verion}</version>
+                <version>${wildfly.microprofile.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -59,16 +57,28 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>${java.ee.api.verion}</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
+
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -92,15 +102,14 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
                         </path>
-                        <!-- This is needed when using Lombok 1.18.16 and above -->
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok-mapstruct-binding</artifactId>
@@ -128,6 +137,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
             </plugin>
         </plugins>
         <pluginManagement>

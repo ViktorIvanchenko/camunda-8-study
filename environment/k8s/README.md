@@ -11,7 +11,7 @@ helm upgrade -i cert-manager oci://registry-1.docker.io/bitnamicharts/cert-manag
 cd c8study
 kubectl create namespace pivdenniy
 helm dependency update
-helm upgrade -i c8study . -n pivdenniy
+helm upgrade -i c8study . -n pivdenniy -f secret-values.yaml
 ```
 
 ## List issued CSR and certs provided by cert-manager

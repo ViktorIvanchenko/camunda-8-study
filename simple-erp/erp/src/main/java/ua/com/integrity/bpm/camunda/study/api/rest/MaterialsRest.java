@@ -10,11 +10,11 @@ import ua.com.integrity.bpm.camunda.study.dto.materail.ConsumptionRateDto;
 import ua.com.integrity.bpm.camunda.study.dto.materail.MaterialDto;
 import ua.com.integrity.bpm.camunda.study.service.MaterialsService;
 
-import javax.inject.Inject;
-import javax.validation.Valid;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.inject.Inject;
+import jakarta.validation.Valid;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;

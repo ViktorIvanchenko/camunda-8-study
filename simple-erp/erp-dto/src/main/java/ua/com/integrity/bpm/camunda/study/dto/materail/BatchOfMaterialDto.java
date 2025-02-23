@@ -14,9 +14,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ua.com.integrity.bpm.camunda.study.dto.utils.JaxbLocalDateAdapter;
 
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import jakarta.validation.constraints.NotNull;
+import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;

@@ -3,8 +3,8 @@ package ua.com.integrity.bpm.camunda.study.dao.impl.equipment;
 import ua.com.integrity.bpm.camunda.study.dao.equipment.EquipmentDao;
 import ua.com.integrity.bpm.camunda.study.domain.equipment.Equipment;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 

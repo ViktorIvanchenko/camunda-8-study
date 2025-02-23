@@ -8,11 +8,11 @@ import ua.com.integrity.bpm.camunda.study.dto.equipment.MaintenanceDto;
 import ua.com.integrity.bpm.camunda.study.dto.equipment.SupplyRateDto;
 import ua.com.integrity.bpm.camunda.study.service.EquipmentService;
 
-import javax.inject.Inject;
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebResult;
-import javax.jws.WebService;
+import jakarta.inject.Inject;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
+import jakarta.jws.WebResult;
+import jakarta.jws.WebService;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ua.com.integrity.bpm.camunda.study.dto.materail.MeasureUnit;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import static ua.com.integrity.bpm.camunda.study.domain.DBConstants.MATERIALS_SEQUENCE;
 

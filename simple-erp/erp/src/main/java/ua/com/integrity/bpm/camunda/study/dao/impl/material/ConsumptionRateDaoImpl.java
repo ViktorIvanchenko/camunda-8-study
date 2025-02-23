@@ -4,8 +4,8 @@ import ua.com.integrity.bpm.camunda.study.dao.GenericDao;
 import ua.com.integrity.bpm.camunda.study.dao.material.ConsumptionRateDao;
 import ua.com.integrity.bpm.camunda.study.domain.materail.ConsumptionRate;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 

@@ -8,7 +8,7 @@ import ua.com.integrity.bpm.camunda.study.domain.DBConstants;
 import ua.com.integrity.bpm.camunda.study.domain.Employee;
 import ua.com.integrity.bpm.camunda.study.dto.vacation.VacationType;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity

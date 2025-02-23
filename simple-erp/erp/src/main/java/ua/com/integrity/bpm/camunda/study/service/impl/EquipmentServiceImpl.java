@@ -17,9 +17,9 @@ import ua.com.integrity.bpm.camunda.study.dto.equipment.SupplyRateDto;
 import ua.com.integrity.bpm.camunda.study.mapper.ErpMapper;
 import ua.com.integrity.bpm.camunda.study.service.EquipmentService;
 
-import javax.inject.Inject;
-import javax.interceptor.InterceptorBinding;
-import javax.transaction.Transactional;
+import jakarta.inject.Inject;
+import jakarta.interceptor.InterceptorBinding;
+import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;

@@ -6,11 +6,11 @@ import ua.com.integrity.bpm.camunda.study.dto.materail.ConsumptionRateDto;
 import ua.com.integrity.bpm.camunda.study.dto.materail.MaterialDto;
 import ua.com.integrity.bpm.camunda.study.service.MaterialsService;
 
-import javax.inject.Inject;
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebResult;
-import javax.jws.WebService;
+import jakarta.inject.Inject;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
+import jakarta.jws.WebResult;
+import jakarta.jws.WebService;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;

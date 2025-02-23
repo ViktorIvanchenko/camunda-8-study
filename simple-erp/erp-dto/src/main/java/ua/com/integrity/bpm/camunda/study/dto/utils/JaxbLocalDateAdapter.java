@@ -1,6 +1,6 @@
 package ua.com.integrity.bpm.camunda.study.dto.utils;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 import java.time.LocalDate;
 
 public class JaxbLocalDateAdapter extends XmlAdapter<String, LocalDate> {
