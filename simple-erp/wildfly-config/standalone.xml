@@ -142,7 +142,7 @@
                         ${env.POSTGRESQL_JDBC_URL:jdbc:postgresql://localhost:5432/postgres}
                     </xa-datasource-property>
                     <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
-                    <driver>postgresql-42.7.5.jar</driver>
+                    <driver>postgresql.jar</driver>
                     <security user-name="${env.POSTGRESQL_USERNAME:postgres}" password="${env.POSTGRESQL_PASSWORD:postgres}"/>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>

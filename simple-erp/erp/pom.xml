@@ -74,9 +74,30 @@
             <artifactId>jakarta.transaction-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
-
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-postgresq-jdbc</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifact>org.postgresql:postgresql:${postgresql.jdbc.version}</artifact>
+                            <stripVersion>true</stripVersion>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <profiles>
         <profile>
@@ -113,6 +134,17 @@
                             <password>${env.WILDFLY_PASSWORD}</password>
                         </configuration>
                         <executions>
+                            <execution>
+                                <id>deploy-postgresql-driver</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy-only</goal>
+                                </goals>
+                                <configuration>
+                                    <filename>postgresql.jar</filename>
+                                    <targetDir>${project.build.directory}/dependency</targetDir>
+                                </configuration>
+                            </execution>
                             <execution>
                                 <phase>deploy</phase>
                                 <goals>
