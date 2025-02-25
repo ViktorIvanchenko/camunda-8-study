@@ -1,0 +1,402 @@
+global:
+  kibanaEnabled: true
+  security:
+    allowInsecureImages: true
+  elasticsearch:
+    external: true
+    auth:
+      password: "todo"
+  identity:
+    keycloak:
+      auth:
+        adminUser: todo
+        existingSecret: todo
+        existingSecretKey: todo
+    auth:
+      enabled: true
+      publicIssuerUrl: "todo"
+      issuerBackendUrl: "todo"
+      identity:
+        redirectUrl: "todo"
+      operate:
+        redirectUrl: "todo"
+        existingSecret:
+          name: todo
+      tasklist:
+        redirectUrl: "todo"
+        existingSecret:
+          name: todo
+      optimize:
+        redirectUrl: "todo"
+        existingSecret:
+          name: todo
+      connectors:
+        existingSecret:
+          name: todo
+      webModeler:
+        redirectUrl: "todo"
+      zeebe:
+        existingSecret:
+          name: todo
+  ingress:
+    enabled: true
+    host: "todo"
+    className: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+    tls:
+      enabled: true
+      secretName: "todo"
+
+
+camunda:
+  console:
+    enabled: false
+  zeebe:
+    clusterSize: 1
+    replicationFactor: 1
+    partitionCount: 3
+    resources:
+      requests:
+        cpu: 600m
+        memory: 1280Mi
+      limits:
+        cpu: 1100m
+        memory: 1792Mi
+    pvcSize: "5Gi"
+  zeebeGateway:
+    replicas: 1
+    resources:
+      requests:
+        cpu: 500m
+        memory: 600Mi
+      limits:
+        cpu: 800m
+        memory: 1024Mi
+    contextPath: "/zeebe"
+    ingress:
+      grpc:
+        enabled: true
+        host: "todo"
+        className: nginx
+        annotations:
+          nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+          cert-manager.io/issuer: "todo"
+        tls:
+          enabled: true
+          secretName: "todo"
+  operate:
+    resources:
+      requests:
+        cpu: 600m
+        memory: 1024Mi
+      limits:
+        cpu: 1200m
+        memory: 2Gi
+    contextPath: "/operate"
+  tasklist:
+    resources:
+      requests:
+        cpu: 500m
+        memory: 768Mi
+      limits:
+        cpu: 800m
+        memory: 1280Mi
+    contextPath: "/tasklist"
+  optimize:
+    resources:
+      requests:
+        cpu: 600m
+        memory: 1Gi
+      limits:
+        cpu: 1200m
+        memory: 2Gi
+    contextPath: "/optimize"
+  identity:
+    resources:
+      requests:
+        cpu: 400m
+        memory: 1024Mi
+      limits:
+        cpu: 700m
+        memory: 1530Mi
+    contextPath: "/identity"
+    firstUser:
+      username: "todo"
+      existingSecret: todo
+  webModeler:
+    enabled: true
+    contextPath: "/modeler"
+    webapp:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 400m
+          memory: 512Mi
+    websockets:
+      resources:
+        requests:
+          cpu: 50m
+          memory: 192Mi
+        limits:
+          cpu: 150m
+          memory: 256Mi
+    restapi:
+      resources:
+        requests:
+          cpu: 500m
+          memory: 1Gi
+        limits:
+          cpu: 800m
+          memory: 2Gi
+      mail:
+        fromAddress: webmodeler.c8study@integrity.com.ua
+  postgresql:
+    enabled: true
+    auth:
+      password: "todo"
+      postgresPassword: "todo"
+    primary:
+      persistence:
+        size: 2Gi
+      resources:
+        requests:
+          cpu: 400m
+          memory: 768Mi
+        limits:
+          cpu: 800m
+          memory: 1530Mi
+  identityKeycloak:
+    replicaCount: 1
+    resources:
+      requests:
+        cpu: 400m
+        memory: 768Mi
+      limits:
+        cpu: 800m
+        memory: 1530Mi
+    auth:
+      existingSecret: todo
+      passwordSecretKey: todo
+    postgresql:
+      auth:
+        password: "todo"
+        postgresPassword: "todo"
+      primary:
+        persistence:
+          size: 2Gi
+        resources:
+          requests:
+            cpu: 400m
+            memory: 768Mi
+          limits:
+            cpu: 800m
+            memory: 1530Mi
+  identityPostgresql:
+    enabled: false
+  connectors:
+    enabled: false
+    replicas: 1
+    resources:
+      requests:
+        cpu: 700m
+        memory: 1Gi
+      limits:
+        cpu: 1300m
+        memory: 2Gi
+    contextPath: "/connectors"
+  elasticsearch:
+    global:
+      kibanaEnabled: true
+    sysctlImage:
+      enabled: false
+    security:
+      elasticPassword: "todo"
+    master:
+      replicaCount: 1
+      persistence:
+        size: 8Gi
+      resources:
+        requests:
+          cpu: 800m
+          memory: 1280Mi
+        limits:
+          cpu: 2300m
+          memory: 2Gi
+    kibana:
+      image:
+        tag: 8.15.4
+      elasticsearch:
+        security:
+          auth:
+            enabled: true
+            kibanaPassword: "todo"
+            createSystemUser: true
+            elasticsearchPasswordSecret: todo
+      replicaCount: 1
+      resources:
+        requests:
+          cpu: 600m
+          memory: 1024Mi
+        limits:
+          cpu: 1300m
+          memory: 1536Mi
+      configuration:
+        server:
+          basePath: "/kibana"
+          publicBaseUrl: "todo"
+      readinessProbe:
+        enabled: false
+      ingress:
+        enabled: true
+        hostname: "todo"
+        path: "/kibana(/|$)(.*)"
+        ingressClassName: nginx
+        annotations:
+          nginx.ingress.kubernetes.io/use-regex: "true"
+          nginx.ingress.kubernetes.io/rewrite-target: /$2
+          nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+          cert-manager.io/issuer: "todo"
+        tls: true
+        certManager: true
+
+erp:
+  nameOverride: erp
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 600m
+      memory: 768Mi
+    limits:
+      cpu: 900m
+      memory: 1536Mi
+  wildflyUsername: "todo"
+  wildflyPassword: "todo"
+  initContainers:
+    - name: copy-simple-erp-source-files
+      image: bitnami/git:2.48.1-debian-12-r4
+      imagePullPolicy: IfNotPresent
+      command:
+        - /bin/bash
+      args:
+        - -ec
+        - |
+          #!/bin/bash
+          [[ -f "/opt/bitnami/scripts/git/entrypoint.sh" ]] && source "/opt/bitnami/scripts/git/entrypoint.sh"
+          git clone https://github.com/ViktorIvanchenko/camunda-8-study --branch master /erp-src-dir
+          cp /erp-src-dir/simple-erp/wildfly-config/standalone.xml /wildfly-config/standalone.xml
+      volumeMounts:
+        - name: empty-dir
+          mountPath: /erp-src-dir
+          subPath: erp-src-dir
+        - name: empty-dir
+          mountPath: /wildfly-config
+          subPath: wildfly-mounted-conf-dir
+      resources:
+        requests:
+          cpu: 300m
+          memory: 768Mi
+        limits:
+          cpu: 600m
+          memory: 1536Mi
+    - name: build-erp-web-app
+      image: maven:3.9.9-eclipse-temurin-21-jammy
+      imagePullPolicy: IfNotPresent
+      command:
+        - /bin/bash
+      args:
+        - -ec
+        - |
+          #!/bin/bash
+          cd /erp-src-dir/simple-erp
+          mvn install -P docker-compose-deploy -pl erp -am
+          cp /erp-src-dir/simple-erp/erp/target/dependency/postgresql.jar /app/postgresql.jar
+          cp /erp-src-dir/simple-erp/erp/target/erp.war /app/erp.war
+      env:
+        - name: CHANGELOG_DIRECTORY
+          value: /erp-src-dir/simple-erp/erp
+        - name: POSTGRESQL_JDBC_URL
+          value: jdbc:postgresql://c8study-erp-postgres:5432/erp
+      envFrom:
+        - secretRef:
+            name: "c8study-erp-secret"
+      volumeMounts:
+        - name: empty-dir
+          mountPath: /erp-src-dir
+          subPath: erp-src-dir
+        - name: empty-dir
+          mountPath: /app
+          subPath: app-dir
+      resources:
+        requests:
+          cpu: 600m
+          memory: 768Mi
+        limits:
+          cpu: 900m
+          memory: 1536Mi
+  extraEnvVars:
+    - name: POSTGRESQL_JDBC_URL
+      value: jdbc:postgresql://c8study-erp-postgres:5432/erp
+    - name: WILDFLY_MOUNTED_CONF_DIR
+      value: /wildfly-config
+  extraEnvVarsSecret: "c8study-erp-secret"
+  extraVolumeMounts:
+    - name: empty-dir
+      mountPath: /wildfly-config
+      subPath: wildfly-mounted-conf-dir
+    - name: empty-dir
+      mountPath: /opt/bitnami/wildfly/standalone/deployments
+      subPath: app-dir
+  persistence:
+    enabled: false
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: true
+    hostname: "todo"
+    ingressClassName: nginx
+    path: "/wf(/|$)(.*)"
+    annotations:
+      nginx.ingress.kubernetes.io/use-regex: "true"
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+      nginx.ingress.kubernetes.io/ssl-redirect: 'false'
+    tls: true
+    certManager: true
+
+erpPostgresql:
+  nameOverride: erp-postgres
+  auth:
+    username: "todo"
+    database: "todo"
+    password: "todo"
+    postgresPassword: "todo"
+  primary:
+    persistence:
+      size: 2Gi
+    resources:
+      requests:
+        cpu: 400m
+        memory: 768Mi
+      limits:
+        cpu: 800m
+        memory: 1530Mi
+
+ca:
+  name: todo
+  acme:
+    server: todo
+    email: todo
+    privateKeySecretRef: todo
+    http01:
+      ingressClassName: nginx
+
+staticSecret:
+  keycloakAdminPassword: "todo"
+  identityFirstUserPassword: "todo"
+  operateKeycloakClientSecret: "todo"
+  tasklistKeycloakClientSecret: "todo"
+  optimizeKeycloakClientSecret: "todo"
+  connectorsKeycloakClientSecret: "todo"
+  zeebeKeycloakClientSecret: "todo"

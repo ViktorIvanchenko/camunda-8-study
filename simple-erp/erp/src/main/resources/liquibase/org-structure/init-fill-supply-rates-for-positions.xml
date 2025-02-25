@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet  id="map-positions-and-supply-rates-main-unit"  author="vivanchenko">
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="11" />
+            <column name="sup_rate_id" valueNumeric="4001" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="11" />
+            <column name="sup_rate_id" valueNumeric="4110" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="12" />
+            <column name="sup_rate_id" valueNumeric="4005" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="12" />
+            <column name="sup_rate_id" valueNumeric="4002" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="12" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="13" />
+            <column name="sup_rate_id" valueNumeric="4004" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="13" />
+            <column name="sup_rate_id" valueNumeric="4007" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="13" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="14" />
+            <column name="sup_rate_id" valueNumeric="4005" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="14" />
+            <column name="sup_rate_id" valueNumeric="4007" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="14" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="15" />
+            <column name="sup_rate_id" valueNumeric="4005" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="15" />
+            <column name="sup_rate_id" valueNumeric="4003" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="15" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+    </changeSet>
+
+    <changeSet  id="map-positions-and-supply-rates-sales-unit"  author="vivanchenko">
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="21" />
+            <column name="sup_rate_id" valueNumeric="4001" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="21" />
+            <column name="sup_rate_id" valueNumeric="4110" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="21" />
+            <column name="sup_rate_id" valueNumeric="4009" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="21" />
+            <column name="sup_rate_id" valueNumeric="4006" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="22" />
+            <column name="sup_rate_id" valueNumeric="4001" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="22" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="22" />
+            <column name="sup_rate_id" valueNumeric="4005" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="22" />
+            <column name="sup_rate_id" valueNumeric="4007" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="23" />
+            <column name="sup_rate_id" valueNumeric="4001" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="23" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="23" />
+            <column name="sup_rate_id" valueNumeric="4005" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="24" />
+            <column name="sup_rate_id" valueNumeric="4001" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="24" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="24" />
+            <column name="sup_rate_id" valueNumeric="4005" />
+        </insert>
+    </changeSet>
+
+    <changeSet  id="map-positions-and-supply-rates-engineers-unit"  author="vivanchenko">
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="31" />
+            <column name="sup_rate_id" valueNumeric="4021" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="31" />
+            <column name="sup_rate_id" valueNumeric="4110" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="31" />
+            <column name="sup_rate_id" valueNumeric="4009" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="31" />
+            <column name="sup_rate_id" valueNumeric="4006" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="32" />
+            <column name="sup_rate_id" valueNumeric="4021" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="32" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="32" />
+            <column name="sup_rate_id" valueNumeric="4007" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="33" />
+            <column name="sup_rate_id" valueNumeric="4021" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="33" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="34" />
+            <column name="sup_rate_id" valueNumeric="4002" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="34" />
+            <column name="sup_rate_id" valueNumeric="4005" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="34" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="35" />
+            <column name="sup_rate_id" valueNumeric="4002" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="35" />
+            <column name="sup_rate_id" valueNumeric="4005" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="35" />
+            <column name="sup_rate_id" valueNumeric="4007" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="35" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="36" />
+            <column name="sup_rate_id" valueNumeric="4002" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="36" />
+            <column name="sup_rate_id" valueNumeric="4005" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="36" />
+            <column name="sup_rate_id" valueNumeric="4006" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="36" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="37" />
+            <column name="sup_rate_id" valueNumeric="4005" />
+        </insert>
+        <insert tableName="positions_supply_rates">
+            <column name="position_id" valueNumeric="37" />
+            <column name="sup_rate_id" valueNumeric="4010" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

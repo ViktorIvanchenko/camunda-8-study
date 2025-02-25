@@ -1,0 +1,78 @@
+{
+  "components": [
+    {
+      "label": "Ініціатор заявки",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1sqm0ry",
+        "columns": null
+      },
+      "id": "Field_0yjjvj9",
+      "key": "vacation_full_name",
+      "disabled": true
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "З",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_1e6guc9",
+        "columns": null
+      },
+      "id": "Field_11mcexm",
+      "key": "vacation_start_date",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "по",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_1e6guc9",
+        "columns": null
+      },
+      "id": "Field_0kdmeng",
+      "key": "vacation_end_date",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Річна",
+          "value": "ANNUALLY"
+        },
+        {
+          "label": "Додаткова",
+          "value": "ADDITIONAL"
+        }
+      ],
+      "label": "Тип",
+      "type": "select",
+      "layout": {
+        "row": "Row_1e6guc9",
+        "columns": null
+      },
+      "id": "Field_0ao2gb8",
+      "key": "vacationType",
+      "defaultValue": "value",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "type-and-duration-vacation",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.5.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.23.0"
+  },
+  "schemaVersion": 16
+}

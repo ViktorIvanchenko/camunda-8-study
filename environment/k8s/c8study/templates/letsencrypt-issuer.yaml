@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: {{ .Values.ca.name | quote }}
+  namespace: {{ include "common.names.namespace" . | quote }}
+spec:
+  acme:
+    {{- with .Values.ca.acme }}
+    # The ACME server URL
+    server: {{ .server | quote }}
+    # Email address used for ACME registration
+    email: {{ .email | quote }}
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: {{ .privateKeySecretRef | quote }}
+    # Enable the HTTP-01 challenge provider
+    solvers:
+      - http01:
+          ingress:
+            ingressClassName: {{ .http01.ingressClassName | quote }}
+    {{- end }}

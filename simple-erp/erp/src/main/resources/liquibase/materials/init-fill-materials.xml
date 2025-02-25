@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet  id="add-init-materials"  author="vivanchenko">
+        <insert tableName="materials">
+            <column name="id" valueNumeric="51" />
+            <column  name="measure_unit" value="PCS" />
+            <column  name="title" value="Бумага офисная А4"/>
+        </insert>
+        <insert tableName="materials">
+            <column name="id" valueNumeric="52" />
+            <column  name="measure_unit" value="PKG" />
+            <column  name="title" value="Бумага офисная А4 в упаковке (500 шт)"/>
+        </insert>
+        <insert tableName="materials">
+            <column name="id" valueNumeric="53" />
+            <column  name="measure_unit" value="PCS" />
+            <column  name="title" value="Бумага офисная А3"/>
+        </insert>
+        <insert tableName="materials">
+            <column name="id" valueNumeric="54" />
+            <column  name="measure_unit" value="PKG" />
+            <column  name="title" value="Бумага офисная А3 в упаковке (100 шт)"/>
+        </insert>
+        <insert tableName="materials">
+            <column name="id" valueNumeric="55" />
+            <column  name="measure_unit" value="PKG" />
+            <column  name="title" value="Тонер IPM HP 1005/1505"/>
+        </insert>
+        <insert tableName="materials">
+            <column name="id" valueNumeric="56" />
+            <column  name="measure_unit" value="PKG" />
+            <column  name="title" value="Тонер PRINTALIST HP CLJ универсальный"/>
+        </insert>
+        <insert tableName="materials">
+            <column name="id" valueNumeric="57" />
+            <column  name="measure_unit" value="PKG" />
+            <column  name="title" value="Тонер PRINTALIST MPT5"/>
+        </insert>
+        <insert tableName="materials">
+            <column name="id" valueNumeric="58" />
+            <column  name="measure_unit" value="PCS" />
+            <column  name="title" value="Тонер-картридж OKI C310/C330/C510/C530 Black"/>
+        </insert>
+        <insert tableName="materials">
+            <column name="id" valueNumeric="59" />
+            <column  name="measure_unit" value="PCS" />
+            <column  name="title" value="Тонер-картридж OKI C3100 magenta"/>
+        </insert>
+        <insert tableName="materials">
+            <column name="id" valueNumeric="60" />
+            <column  name="measure_unit" value="LITER" />
+            <column  name="title" value="Спирт технический"/>
+        </insert>
+        <insert tableName="materials">
+            <column name="id" valueNumeric="61" />
+            <column  name="measure_unit" value="METER" />
+            <column  name="title" value="Кабель SFTP cat.4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet  id="add-init-batch-of-materials"  author="vivanchenko">
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="511" />
+            <column  name="material_id" valueNumeric="51" />
+            <column  name="purchase_date" valueDate="2020-05-25" />
+            <column  name="purchase_amount" valueNumeric="1000" />
+            <column  name="price" valueNumeric="88.50" />
+            <column  name="remaining_amount" valueNumeric="202" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="521" />
+            <column  name="material_id" valueNumeric="52" />
+            <column  name="purchase_date" valueDate="2019-05-25" />
+            <column  name="purchase_amount" valueNumeric="9" />
+            <column  name="price" valueNumeric="698.20" />
+            <column  name="remaining_amount" valueNumeric="2" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="522" />
+            <column  name="material_id" valueNumeric="52" />
+            <column  name="purchase_date" valueDate="2021-01-25" />
+            <column  name="purchase_amount" valueNumeric="15" />
+            <column  name="price" valueNumeric="1150" />
+            <column  name="remaining_amount" valueNumeric="6" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="541" />
+            <column  name="material_id" valueNumeric="54" />
+            <column  name="purchase_date" valueDate="2019-05-25" />
+            <column  name="purchase_amount" valueNumeric="3" />
+            <column  name="price" valueNumeric="300" />
+            <column  name="remaining_amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="551" />
+            <column  name="material_id" valueNumeric="55" />
+            <column  name="purchase_date" valueDate="2019-05-25" />
+            <column  name="purchase_amount" valueNumeric="5" />
+            <column  name="price" valueNumeric="1567" />
+            <column  name="remaining_amount" valueNumeric="5" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="561" />
+            <column  name="material_id" valueNumeric="56" />
+            <column  name="purchase_date" valueDate="2019-05-25" />
+            <column  name="purchase_amount" valueNumeric="12" />
+            <column  name="price" valueNumeric="2078.20" />
+            <column  name="remaining_amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="581" />
+            <column  name="material_id" valueNumeric="58" />
+            <column  name="purchase_date" valueDate="2019-05-25" />
+            <column  name="purchase_amount" valueNumeric="3" />
+            <column  name="price" valueNumeric="1500" />
+            <column  name="remaining_amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="582" />
+            <column  name="material_id" valueNumeric="58" />
+            <column  name="purchase_date" valueDate="2020-05-25" />
+            <column  name="purchase_amount" valueNumeric="6" />
+            <column  name="price" valueNumeric="1500" />
+            <column  name="remaining_amount" valueNumeric="3" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="591" />
+            <column  name="material_id" valueNumeric="59" />
+            <column  name="purchase_date" valueDate="2019-05-25" />
+            <column  name="purchase_amount" valueNumeric="3" />
+            <column  name="price" valueNumeric="3600" />
+            <column  name="remaining_amount" valueNumeric="2" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="601" />
+            <column  name="material_id" valueNumeric="60" />
+            <column  name="purchase_date" valueDate="2017-05-25" />
+            <column  name="purchase_amount" valueNumeric="12.5" />
+            <column  name="price" valueNumeric="428.78" />
+            <column  name="remaining_amount" valueNumeric="0.25" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="611" />
+            <column  name="material_id" valueNumeric="61" />
+            <column  name="purchase_date" valueDate="2017-05-25" />
+            <column  name="purchase_amount" valueNumeric="403" />
+            <column  name="price" valueNumeric="968" />
+            <column  name="remaining_amount" valueNumeric="105.4" />
+        </insert>
+        <insert tableName="material_batches">
+            <column name="id" valueNumeric="612" />
+            <column  name="material_id" valueNumeric="61" />
+            <column  name="purchase_date" valueDate="2020-05-25" />
+            <column  name="purchase_amount" valueNumeric="403" />
+            <column  name="price" valueNumeric="1069" />
+            <column  name="remaining_amount" valueNumeric="203.4" />
+        </insert>
+    </changeSet>
+
+    <changeSet  id="add-init-consumption-rates"  author="vivanchenko">
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1051" />
+            <column  name="material_id" valueNumeric="51" />
+            <column  name="title" value="Расход бумаги на принтере" />
+            <column  name="duration_unit" value="WEEKS" />
+            <column  name="duration_amount" valueNumeric="1" />
+            <column  name="amount" valueNumeric="55" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1056" />
+            <column  name="material_id" valueNumeric="57" />
+            <column  name="title" value="Расход тонера при малой заправке" />
+            <column  name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1058" />
+            <column  name="material_id" valueNumeric="58" />
+            <column  name="title" value="Расход катриджей при полной замене" />
+            <column  name="amount" valueNumeric="3" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1059" />
+            <column  name="material_id" valueNumeric="59" />
+            <column  name="title" value="Расход катриджей при неполной замене" />
+            <column  name="amount" valueNumeric="1" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1060" />
+            <column  name="material_id" valueNumeric="60" />
+            <column  name="title" value="Норма расхода спирта №1" />
+            <column  name="amount" valueNumeric="0.25" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1061" />
+            <column  name="material_id" valueNumeric="60" />
+            <column  name="title" value="Норма расхода спирта №2" />
+            <column  name="amount" valueNumeric="0.5" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1062" />
+            <column  name="material_id" valueNumeric="60" />
+            <column  name="title" value="Норма расхода спирта №3" />
+            <column  name="amount" valueNumeric="0.7" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1063" />
+            <column  name="material_id" valueNumeric="60" />
+            <column  name="title" value="Норма расхода спирта №4" />
+            <column  name="amount" valueNumeric="1.25" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1064" />
+            <column  name="material_id" valueNumeric="61" />
+            <column  name="title" value="Расход кабеля при ЕТО" />
+            <column  name="amount" valueNumeric="0.01" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1065" />
+            <column  name="material_id" valueNumeric="61" />
+            <column  name="title" value="Расход кабеля при ТО-1" />
+            <column  name="amount" valueNumeric="1.3" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1066" />
+            <column  name="material_id" valueNumeric="61" />
+            <column  name="title" value="Расход кабеля при ТО-2" />
+            <column  name="amount" valueNumeric="26.1" />
+        </insert>
+        <insert tableName="consumption_rates">
+            <column name="id" valueNumeric="1067" />
+            <column  name="material_id" valueNumeric="61" />
+            <column  name="title" value="Расход кабеля при замене" />
+            <column  name="amount" valueNumeric="305.1" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

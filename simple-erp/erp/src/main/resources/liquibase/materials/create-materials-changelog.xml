@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet  id="add-materials-related-tables"  author="vivanchenko">
+        <createSequence sequenceName="materials_seq" startValue="99000"/>
+        <createTable  tableName="materials">
+            <column  name="id"  type="bigint">
+                <constraints primaryKey="true" />
+            </column>
+            <column  name="title" type="text"/>
+            <column  name="measure_unit" type="text"/>
+        </createTable>
+
+        <createSequence sequenceName="material_batches_seq" startValue="166000" />
+        <createTable  tableName="material_batches">
+            <column  name="id" type="bigint">
+                <constraints primaryKey="true" />
+            </column>
+            <column  name="material_id"  type="bigint">
+                <constraints referencedTableName="materials" referencedColumnNames="id" foreignKeyName="materials_fk"/>
+            </column>
+            <column  name="purchase_date" type="date"/>
+            <column  name="purchase_amount" type="decimal"/>
+            <column  name="price" type="decimal"/>
+            <column  name="remaining_amount" type="decimal"/>
+        </createTable>
+
+        <createTable  tableName="consumption_rates">
+            <column  name="id" type="bigint">
+                <constraints primaryKey="true" />
+            </column>
+            <column  name="title" type="text"/>
+            <column  name="material_id"  type="bigint">
+                <constraints referencedTableName="materials" referencedColumnNames="id" foreignKeyName="materials_fk"/>
+            </column>
+            <column  name="duration_unit" type="text"/>
+            <column  name="duration_amount" type="bigint"/>
+            <column  name="amount" type="decimal"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

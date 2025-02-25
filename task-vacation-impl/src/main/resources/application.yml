@@ -1,0 +1,13 @@
+spring:
+  application:
+      name: task-vacation-impl
+
+camunda:
+  client:
+    mode: selfmanaged
+
+erp:
+  baseUrl: "http://localhost:8080/erp"
+
+server:
+  port: 9190

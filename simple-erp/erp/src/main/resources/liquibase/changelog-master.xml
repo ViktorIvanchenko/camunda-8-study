@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <include file="org-structure/create-org-structure-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="materials/create-materials-changelog.xml" relativeToChangelogFile="true"/>
+    <include file="equipment/create-equipment-changelog.xml" relativeToChangelogFile="true" />
+    <include file="org-structure/init-fill-org-structure.xml" relativeToChangelogFile="true" />
+    <include file="materials/init-fill-materials.xml" relativeToChangelogFile="true"/>
+    <include file="equipment/init-fill-equipment-type-data.xml" relativeToChangelogFile="true" />
+    <include file="org-structure/init-fill-supply-rates-for-positions.xml" relativeToChangelogFile="true" />
+    <include file="equipment/init-fill-equipment-list.xml" relativeToChangelogFile="true" />
+    <include file="org-structure/add-login-to-employees.xml" relativeToChangelogFile="true" />
+    <changeSet id="update-org-unit-names" author="vivanchenko">
+        <update tableName="org_unit">
+            <column name="title" value="Отдел продаж"/>
+            <where>id = 2</where>
+        </update>
+        <update tableName="org_unit">
+            <column name="title" value="Инженерный отдел"/>
+            <where>id = 3</where>
+        </update>
+    </changeSet>
+    <changeSet id="add-trips" author="vivanchenko">
+        <createTable tableName="trips">
+            <column  name="id" type="bigint">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="employee_id" type="bigint">
+                <constraints referencedTableName="employee" referencedColumnNames="id" foreignKeyName="employee_fk"/>
+            </column>
+            <column  name="start_date" type="date"/>
+            <column  name="duration" type="integer"/>
+            <column  name="type" type="text"/>
+            <column  name="departure_country" type="text"/>
+            <column  name="departure_city" type="text"/>
+            <column  name="arrival_country" type="text"/>
+            <column  name="arrival_city" type="text"/>
+            <column  name="subject" type="text"/>
+            <column  name="total_cost" type="text" />
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,42 @@
+services:
+  wildfly:
+    image: docker.io/bitnami/wildfly:35.0.1
+    ports:
+      - '8080:8080'
+      - '9990:9990'
+    volumes:
+      - './wildfly-config:/opt/wildfly-config'
+    environment:
+      - WILDFLY_USERNAME=user
+      - WILDFLY_PASSWORD=password
+      - WILDFLY_MOUNTED_CONF_DIR=/opt/wildfly-config
+      - POSTGRESQL_JDBC_URL=jdbc:postgresql://postgres:5432/wildfly
+      - POSTGRESQL_USERNAME=wildfly
+      - POSTGRESQL_PASSWORD=password
+  postgres:
+    image: docker.io/bitnami/postgresql:14
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'simple_erp_data:/bitnami/postgresql'
+    environment:
+      - POSTGRESQL_DATABASE=wildfly
+      - POSTGRESQL_USERNAME=wildfly
+      - POSTGRESQL_PASSWORD=password
+      - POSTGRESQL_EXTRA_FLAGS=--max_prepared_transactions=110
+  app_builder:
+    image: maven:3.9.9-eclipse-temurin-21-jammy
+    command: ["bash", "-c", "cd /opt/app && mvn deploy -P docker-compose-deploy -pl erp -am"]
+    volumes:
+      - '.:/opt/app'
+    environment:
+      - WIDLFLY_HOST=wildfly
+      - WILDFLY_USERNAME=user
+      - WILDFLY_PASSWORD=password
+      - POSTGRESQL_JDBC_URL=jdbc:postgresql://postgres:5432/wildfly
+      - POSTGRESQL_USERNAME=wildfly
+      - POSTGRESQL_PASSWORD=password
+      - CHANGELOG_DIRECTORY=/opt/app/erp
+volumes:
+  simple_erp_data:
+    driver: local

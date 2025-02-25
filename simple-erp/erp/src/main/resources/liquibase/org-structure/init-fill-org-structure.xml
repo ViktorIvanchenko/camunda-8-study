@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet  id="add-org-units"  author="vivanchenko">
+        <insert tableName="org_unit">
+            <column name="id" valueNumeric="1" />
+            <column  name="title" value="ООО ТЕСТОВАЯ КОМПАНИЯ"/>
+        </insert>
+        <insert tableName="org_unit">
+            <column name="id" valueNumeric="2" />
+            <column  name="title" value="Инженерный отдел"/>
+            <column  name="ascendant" value="1"/>
+        </insert>
+        <insert tableName="org_unit">
+            <column name="id" valueNumeric="3" />
+            <column  name="title" value="Отдел продаж"/>
+            <column  name="ascendant" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet  id="add-positions-to-main-unit"  author="vivanchenko">
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="11" />
+            <column  name="org_unit_id" valueNumeric="1" />
+            <column  name="index" valueNumeric="1"/>
+            <column  name="title" value="Директор"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="12" />
+            <column  name="org_unit_id" valueNumeric="1" />
+            <column  name="index" valueNumeric="2"/>
+            <column  name="title" value="Бухгалтер"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="13" />
+            <column  name="org_unit_id" valueNumeric="1" />
+            <column  name="index" valueNumeric="3"/>
+            <column  name="title" value="Заведующий складом"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="14" />
+            <column  name="org_unit_id" valueNumeric="1" />
+            <column  name="index" valueNumeric="4"/>
+            <column  name="title" value="HR-менеждер"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="15" />
+            <column  name="org_unit_id" valueNumeric="1" />
+            <column  name="index" valueNumeric="5"/>
+            <column  name="title" value="Системный администратор"/>
+        </insert>
+    </changeSet>
+
+    <changeSet  id="add-positions-to-sales-unit"  author="vivanchenko">
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="21" />
+            <column  name="org_unit_id" valueNumeric="2" />
+            <column  name="index" valueNumeric="1"/>
+            <column  name="title" value="Начальник отдела"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="22" />
+            <column  name="org_unit_id" valueNumeric="2" />
+            <column  name="index" valueNumeric="2"/>
+            <column  name="title" value="Главный сцециалист по продажам"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="23" />
+            <column  name="org_unit_id" valueNumeric="2" />
+            <column  name="index" valueNumeric="3"/>
+            <column  name="title" value="Ведущий специалист по продажам"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="24" />
+            <column  name="org_unit_id" valueNumeric="2" />
+            <column  name="index" valueNumeric="4"/>
+            <column  name="title" value="Специалист по продажам"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="25" />
+            <column  name="org_unit_id" valueNumeric="2" />
+            <column  name="index" valueNumeric="5"/>
+            <column  name="title" value="Специалист по продажам"/>
+        </insert>
+    </changeSet>
+
+    <changeSet  id="add-positions-to-engineers-unit"  author="vivanchenko">
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="31" />
+            <column  name="org_unit_id" valueNumeric="3" />
+            <column  name="index" valueNumeric="1"/>
+            <column  name="title" value="Начальник отдела"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="32" />
+            <column  name="org_unit_id" valueNumeric="3" />
+            <column  name="index" valueNumeric="2"/>
+            <column  name="title" value="Главный инженер"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="33" />
+            <column  name="org_unit_id" valueNumeric="3" />
+            <column  name="index" valueNumeric="3"/>
+            <column  name="title" value="Ведущий инженер"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="34" />
+            <column  name="org_unit_id" valueNumeric="3" />
+            <column  name="index" valueNumeric="4"/>
+            <column  name="title" value="Ведущий инженер"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="35" />
+            <column  name="org_unit_id" valueNumeric="3" />
+            <column  name="index" valueNumeric="5"/>
+            <column  name="title" value="Инженер"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="36" />
+            <column  name="org_unit_id" valueNumeric="3" />
+            <column  name="index" valueNumeric="6"/>
+            <column  name="title" value="Инженер"/>
+        </insert>
+        <insert tableName="org_position">
+            <column name="id" valueNumeric="37" />
+            <column  name="org_unit_id" valueNumeric="3" />
+            <column  name="index" valueNumeric="7"/>
+            <column  name="title" value="Инженер"/>
+        </insert>
+    </changeSet>
+
+    <changeSet  id="add-employees-to-main-unit"  author="vivanchenko">
+        <insert tableName="employee">
+            <column name="id" valueNumeric="111" />
+            <column  name="f_name" value="Олег"/>
+            <column  name="l_name" value="Главный"/>
+            <column  name="birth_date" valueDate="1974-05-25"/>
+            <column  name="hire_date" valueDate="2006-01-23"/>
+            <column  name="position_id" valueNumeric="11" />
+        </insert>
+        <insert tableName="employee">
+            <column name="id" valueNumeric="121" />
+            <column  name="f_name" value="Светлана"/>
+            <column  name="l_name" value="Копейка"/>
+            <column  name="birth_date" valueDate="1972-11-22"/>
+            <column  name="hire_date" valueDate="2009-12-13"/>
+            <column  name="position_id" valueNumeric="12" />
+        </insert>
+        <insert tableName="employee">
+            <column name="id" valueNumeric="131" />
+            <column  name="f_name" value="Иван"/>
+            <column  name="l_name" value="Старшина"/>
+            <column  name="birth_date" valueDate="1982-01-02"/>
+            <column  name="hire_date" valueDate="2006-12-13"/>
+            <column  name="position_id" valueNumeric="13" />
+        </insert>
+        <insert tableName="employee">
+            <column name="id" valueNumeric="141" />
+            <column  name="f_name" value="Виктория"/>
+            <column  name="l_name" value="Кадр"/>
+            <column  name="birth_date" valueDate="1995-04-01"/>
+            <column  name="hire_date" valueDate="2019-05-06"/>
+            <column  name="position_id" valueNumeric="14" />
+        </insert>
+        <insert tableName="employee">
+            <column name="id" valueNumeric="151" />
+            <column  name="f_name" value="Андрей"/>
+            <column  name="l_name" value="Ад"/>
+            <column  name="birth_date" valueDate="1967-11-22"/>
+            <column  name="hire_date" valueDate="2011-07-09"/>
+            <column  name="position_id" valueNumeric="15" />
+        </insert>
+    </changeSet>
+    <changeSet  id="add-employees-to-sales-unit"  author="vivanchenko">
+        <insert tableName="employee">
+            <column name="id" valueNumeric="211" />
+            <column  name="f_name" value="Петр"/>
+            <column  name="l_name" value="Продажный"/>
+            <column  name="birth_date" valueDate="1988-07-25"/>
+            <column  name="hire_date" valueDate="2007-12-29"/>
+            <column  name="position_id" valueNumeric="21" />
+        </insert>
+        <insert tableName="employee">
+            <column name="id" valueNumeric="221" />
+            <column  name="f_name" value="Ольга"/>
+            <column  name="l_name" value="Рыночная"/>
+            <column  name="birth_date" valueDate="2000-07-25"/>
+            <column  name="hire_date" valueDate="2020-12-29"/>
+            <column  name="position_id" valueNumeric="22" />
+        </insert>
+        <insert tableName="employee">
+            <column name="id" valueNumeric="241" />
+            <column  name="f_name" value="Антон"/>
+            <column  name="l_name" value="Барыга"/>
+            <column  name="birth_date" valueDate="1992-07-04"/>
+            <column  name="hire_date" valueDate="2018-02-16"/>
+            <column  name="position_id" valueNumeric="24" />
+        </insert>
+    </changeSet>
+    <changeSet  id="add-employees-to-engineering-unit"  author="vivanchenko">
+        <insert tableName="employee">
+            <column name="id" valueNumeric="311" />
+            <column  name="f_name" value="Юлия"/>
+            <column  name="l_name" value="Иванова"/>
+            <column  name="birth_date" valueDate="1992-07-25"/>
+            <column  name="hire_date" valueDate="2019-07-21"/>
+            <column  name="position_id" valueNumeric="31" />
+        </insert>
+        <insert tableName="employee">
+            <column name="id" valueNumeric="321" />
+            <column  name="f_name" value="Виктор"/>
+            <column  name="l_name" value="Фахивец"/>
+            <column  name="birth_date" valueDate="1990-09-25"/>
+            <column  name="hire_date" valueDate="2016-03-09"/>
+            <column  name="position_id" valueNumeric="32" />
+        </insert>
+        <insert tableName="employee">
+            <column name="id" valueNumeric="331" />
+            <column  name="f_name" value="Степан"/>
+            <column  name="l_name" value="Разин"/>
+            <column  name="birth_date" valueDate="1978-08-12"/>
+            <column  name="hire_date" valueDate="2000-12-09"/>
+            <column  name="position_id" valueNumeric="33" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

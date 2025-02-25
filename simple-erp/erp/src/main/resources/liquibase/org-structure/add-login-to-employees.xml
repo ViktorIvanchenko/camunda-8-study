@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet  id="add-login-column-to-employee-table"  author="vivanchenko">
+        <addColumn tableName="employee">
+            <column name="login" type="text">
+                <constraints unique="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet  id="update-existing-employees-with-logins"  author="vivanchenko">
+        <update tableName="employee">
+            <column name="login" value="oglavniy" />
+            <where>id=111</where>
+        </update>
+        <update tableName="employee">
+            <column name="login" value="skopeyka" />
+            <where>id=121</where>
+        </update>
+        <update tableName="employee">
+            <column name="login" value="istarshyna" />
+            <where>id=131</where>
+        </update>
+        <update tableName="employee">
+            <column name="login" value="vkadr" />
+            <where>id=141</where>
+        </update>
+        <update tableName="employee">
+            <column name="login" value="aadmin" />
+            <where>id=151</where>
+        </update>
+        <update tableName="employee">
+            <column name="login" value="pprodaznyi" />
+            <where>id=211</where>
+        </update>
+        <update tableName="employee">
+            <column name="login" value="orynochnaya" />
+            <where>id=221</where>
+        </update>
+        <update tableName="employee">
+            <column name="login" value="abaryha" />
+            <where>id=241</where>
+        </update>
+        <update tableName="employee">
+            <column name="login" value="yivanova" />
+            <where>id=311</where>
+        </update>
+        <update tableName="employee">
+            <column name="login" value="vfahivets" />
+            <where>id=321</where>
+        </update>
+        <update tableName="employee">
+            <column name="login" value="srazin" />
+            <where>id=331</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>
