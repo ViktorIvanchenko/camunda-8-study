@@ -11,6 +11,7 @@
   <modules>
     <module>task-vacation-impl</module>
     <module>simple-erp</module>
+    <module>bpmn</module>
   </modules>
 
 </project>
