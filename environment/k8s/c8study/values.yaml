@@ -197,7 +197,7 @@ camunda:
   identityPostgresql:
     enabled: false
   connectors:
-    enabled: false
+    enabled: true
     replicas: 1
     resources:
       requests:
