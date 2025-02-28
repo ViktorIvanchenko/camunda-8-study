@@ -29,6 +29,7 @@ public class ProcessCompensationTest {
         if (!deployed) {
             zeebeClient.newDeployResourceCommand()
                     .addResourceFromClasspath("bpmn/process-compensation-test.bpmn")
+                    .addResourceFromClasspath("bpmn/process-compensation-test-parrallel.bpmn")
                     .addResourceFromClasspath("bpmn/process-compensation-test-with-workers.bpmn")
                     .send().join();
         }
@@ -124,6 +125,32 @@ public class ProcessCompensationTest {
                         "a4",
                         "ee1"
                 );
+    }
+
+    @SneakyThrows
+    @Test
+    void testProcessExecutionWithParralleGatewayFlagIsTrue() {
+        ProcessInstanceEvent processInstance = startProcess(
+                "process-compensation-test-parrallel",
+                true
+        );
+
+        engine.waitForIdleState(Duration.ofSeconds(3));
+        assertThat(processInstance)
+                .isStarted()
+                .hasPassedElementsInOrder(
+                        "se1",
+                        "a1",
+                        "a2",
+                        "g1",
+                        "a3",
+                        "ee1"
+                )
+                .hasPassedElement("cb1")
+                .hasPassedElement("cb2")
+                .hasPassedElement("cb4")
+                .hasPassedElement("ca4")
+                .isCompleted();
     }
 
     private ProcessInstanceEvent startProcess(String bpmnProcessId, boolean flag) {
