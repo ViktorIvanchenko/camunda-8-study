@@ -1,0 +1,115 @@
+@startuml
+
+class OrgUnit {
+    - id: Long
+    - title: String
+}
+
+class Employee {
+    - id: Long
+    - login: String
+    - firstName: String
+    - lastName: String
+    - birthDate: date
+    - hireDate: date
+    - fireDate: date
+}
+
+class Position {
+    - id: Long
+    - title: String
+    - index: Integer
+}
+
+class Material {
+    - id: Long
+    - title: String
+    - measureUnit: enum
+}
+
+class BatchOfMaterial {
+    - id: Long
+    - purchaseDate: date
+    - purchaseAmount: decimal
+    - price: decimal
+    - remainingAmount: decimal
+}
+
+class ConsumptionRate {
+    - id: Long
+    - title: String
+    - durationUnit: enum
+    - durationAmount: Long
+    - amount: decimal
+}
+
+class EquipmentType {
+    - id: Long
+    - title: String
+    - description: String
+    - lifetimeInMonth: Integer
+}
+
+class Equipment {
+    - id: Long
+    - serialNumber: String
+    - purchasePrice: decimal
+    - balancePrice: decimal
+    - commissioningDate: date
+    - decommissioningDate: date
+}
+
+class Maintenance {
+    - id: Long
+    - title: String
+}
+
+class SupplyRate {
+    - id: Long
+    - title: String
+    - amount: Integer
+}
+
+class Trip {
+    - id: Long
+    - startDate: date
+    - duration: Integer
+    - type: enum
+    - departureCountry: String
+    - departureCity: String
+    - arrivalCountry: String
+    - arrivalCity: String
+    - subject: String
+    - totalCost: String
+}
+
+class Vacation {
+    - id: Long
+    - startDate: date
+    - duration: Integer
+    - type: enum
+}
+
+Position *-- OrgUnit : belongs
+Position o-- SupplyRate : relates
+Employee *-- Position : belongs
+
+BatchOfMaterial *-- Material: contains
+
+ConsumptionRate *-- Material: contains
+
+
+Equipment o-- Employee: belongs
+Equipment *-- EquipmentType: belongs
+
+EquipmentType o-- Maintenance: relates
+EquipmentType o-- ConsumptionRate: relates
+
+Maintenance o-- ConsumptionRate: relates
+
+SupplyRate *-- EquipmentType: contains
+
+Trip *-- Employee: belongs
+Vacation *-- Employee: belongs
+
+@enduml
