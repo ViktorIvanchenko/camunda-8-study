@@ -84,3 +84,4 @@ target/
 /environment/tls/
 environment/tls/*.key
 environment/tls/*.csr
+/task-vacation-impl/src/main/resources/application-secret.yml

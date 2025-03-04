@@ -1,0 +1,6 @@
+services:
+  app:
+    image: maven:3.9.9-eclipse-temurin-21-jammy
+    volumes:
+      - '.:/opt/app'
+    command: ["bash", "-c", "cd /opt/app && mvn spring-boot:run"]

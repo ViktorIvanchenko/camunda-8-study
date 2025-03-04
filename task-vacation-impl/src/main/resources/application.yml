@@ -2,12 +2,23 @@ spring:
   application:
       name: task-vacation-impl
 
+
 camunda:
   client:
-    mode: selfmanaged
+    mode: selfManaged
+    auth:
+      client-id: "todo"
+      client-secret: "todo"
+      issuer: "todo"
+    zeebe:
+      enabled: true
+      audience: zeebe-api
+      rest-address: "todo"
+      grpc-address: "todo"
+      execution-threads: 3
+      keep-alive: 50s
+      message-time-to-live: 15s
+
 
 erp:
-  baseUrl: "http://localhost:8080/erp"
-
-server:
-  port: 9190
+  baseUrl: "todo"
