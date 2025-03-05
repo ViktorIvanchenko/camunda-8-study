@@ -207,6 +207,12 @@ camunda:
         cpu: 1300m
         memory: 2Gi
     contextPath: "/connectors"
+    env:
+      - name: POSTGRESQL_JDBC_URL
+        value: jdbc:postgresql://c8study-erp-postgres:5432/erp
+    envFrom:
+      - secretRef:
+          name: "c8study-erp-secret"
   elasticsearch:
     global:
       kibanaEnabled: true
